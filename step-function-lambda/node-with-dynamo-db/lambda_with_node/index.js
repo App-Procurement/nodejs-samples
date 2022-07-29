@@ -4,8 +4,8 @@ exports.handler = (event, context, callback) => {
 
     const credentials = {
         region: 'us-east-1',
-        accessKeyId: "AKIAZSLS3RLM47NJTEMD",
-        secretAccessKey: "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"
+        accessKeyId: "",
+        secretAccessKey: ""
     }
 
     var dynamodb = new AWS.DynamoDB(credentials);
