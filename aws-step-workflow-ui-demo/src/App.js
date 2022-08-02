@@ -1,7 +1,7 @@
-import { CloudWatchLogsLogGroup } from '@aws-sdk/client-sfn';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 let AWS = require('aws-sdk');
+
 
 const App = () => {
 
@@ -14,21 +14,18 @@ const App = () => {
     const [stepInput, setStepInput] = useState('');
     const [useCaseName, setUseCaseName] = useState('')
     const [usecaseList, setUsecaseList] = useState([]);
-    const [selectedUsecaseData, setSelectedUsecaseData] = useState({})
     const [loading, setLoading] = useState(false)
 
-    // let executedStateArr = []
     const [newStateToStart, setnewStateToStart] = useState('')
     const StepFunctions = require('aws-sdk/clients/stepfunctions');
 
     const credentials = {
         region: 'us-east-1',
         accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
-        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY 
+        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
     }
 
-    var dynamodb = new AWS.DynamoDB(credentials);
-
+    const lambda = new AWS.Lambda(credentials);
     const stepfunctions = new StepFunctions(credentials);
 
     var describeSTparams = {
@@ -40,43 +37,42 @@ const App = () => {
         input: "[]"
     };
 
-    
-    function usecaseArnToDynamoDb(arn) {
+    function usecaseArnToDb(arn) {
 
-        var paramsForDb = {
-            TableName: "usecase_arn",
-            Item: {
-                "usecaseName": { S: useCaseName },
-                "executionArn": { S: arn }
-            }
+        let inputForpg = {
+            executionArn: arn,
+            usecaseName: useCaseName
         };
 
-        dynamodb.putItem(paramsForDb, function (err, data) {
-            if (err) {
-                console.error("Unable to write data: ", JSON.stringify(err, null, 2));
-            } else {
-                console.log("Put arn succeeded");
-            }
+        var pgParams = {
+            FunctionName: 'stepFunction_with_psql', /* required */
+            Payload: JSON.stringify(inputForpg)
+        };
+
+        lambda.invoke(pgParams, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else console.log("from pg", data);           // successful response
         });
     }
 
-    function usecaseInputToDynamoDb() {
-
-        var paramsForDb = {
-            TableName: "usecase_input",
-            Item: {
-                "usecaseName": { S: useCaseName },
-                "stepInput": { S: stepInput }
-            }
+    function usecaseInputToDb() {
+        let inputForpg = {
+            stepInput: stepInput,
+            usecaseName: useCaseName
         };
 
-        dynamodb.putItem(paramsForDb, function (err, data) {
-            if (err) {
-                console.error("Unable to write data: ", JSON.stringify(err, null, 2));
-            } else {
-                console.log("Put Input succeeded");
-            }
+        var pgParams1 = {
+
+            FunctionName: 'stepFunction_with_psql_usecase_input', /* required */
+            Payload: JSON.stringify(inputForpg)
+
+        };
+
+        lambda.invoke(pgParams1, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else console.log("from pg", data);           // successful response
         });
+
     }
 
     function executeStateMachine() {
@@ -93,8 +89,8 @@ const App = () => {
             } else {
                 setcurrentExecutionArn(data.executionArn);
                 gettingMachineDef();
-                usecaseArnToDynamoDb(data.executionArn);
-                usecaseInputToDynamoDb();
+                usecaseArnToDb(data.executionArn);
+                usecaseInputToDb();
                 const response = {
                     statusCode: 200,
                     body: JSON.stringify({
@@ -127,7 +123,7 @@ const App = () => {
             } else {
                 setcurrentExecutionArn(data.executionArn);
                 gettingMachineDef();
-                usecaseArnToDynamoDb(data.executionArn);
+                usecaseArnToDb(data.executionArn);
 
                 const response = {
                     statusCode: 200,
@@ -153,69 +149,80 @@ const App = () => {
             }
         };
 
-        dynamodb.getItem(params, function (err, data) {
-            // setLoading(true);
+        let inputForpg = {
+            executionArn: currentExecutionArn
+        };
+
+        var pgParams = {
+            FunctionName: 'stepFunction_getToken', /* required */
+            Payload: JSON.stringify(inputForpg)
+        };
+
+        lambda.invoke(pgParams, function (err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else {
+                console.log("token", data)
+                var paramsForSendSuccessTask = {
+                    output: '1',
+                    taskToken: data.Payload /* required */
+                };
 
-                if (data.hasOwnProperty("Item")) {
-                    var paramsForSendSuccessTask = {
-                        output: '1',
-                        taskToken: data.Item.task_token.S /* required */
-                    };
+                stepfunctions.sendTaskSuccess(paramsForSendSuccessTask, function (err, data) {
+                    if (err) console.log(err, err.stack); // an error occurred
+                    else {
+                        console.log(data);
 
-                    stepfunctions.sendTaskSuccess(paramsForSendSuccessTask, function (err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else console.log(data);           // successful response
-                    });
-                }
+                        setTimeout(() => {
+                            gettingExecutionHistory(currentExecutionArn);
+                        }, 1000);
+                    };           // successful response
+                });
 
-                setTimeout(() => {
-                    gettingExecutionHistory(currentExecutionArn);
-                }, 1000);
-
-                // setTimeout(() => {
-                //     setLoading(false)
-                // }, 1600);
-
-            };
+            };           // successful response
         });
+
+
     }
 
     function getUsecaseList() {
 
-        var params = {
-            TableName: "usecase_arn"
+        var pgParams = {
+            FunctionName: 'stepFunction_with_psql_get_usecase', /* required */
         };
 
-        dynamodb.scan(params, function (err, data) {
+        lambda.invoke(pgParams, function (err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else {
-                setUsecaseList(data.Items)
-                console.log("Got usecase list", data.Items);
-            };
+                setUsecaseList(JSON.parse(data.Payload))
+                console.log("usecaselist", data.Payload)
+
+            };           // successful response
         });
+
     }
 
     function getUsecaseInputData() {
 
-        var params = {
-            TableName: "usecase_input"
+        var pgParams = {
+            FunctionName: 'stepFunction_with_psql_get_input', /* required */
         };
 
-        dynamodb.scan(params, function (err, data) {
+        lambda.invoke(pgParams, function (err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else {
-                console.log("Got usecase inputlist", data.Items);
+                console.log("Got usecase inputlist", data.Payload);
 
-                data.Items.forEach(e => {
-                    if (e.usecaseName.S === useCaseName) {
-                        setStepInput(e.stepInput.S);
+                JSON.parse(data.Payload).forEach(e => {
+                    if (e.usecasename === useCaseName) {
+                        setStepInput(e.stepinput);
                     }
 
                 });
-            };
+
+            };           // successful response
         });
+
+
     }
 
     function gettingMachineDef() {
@@ -243,7 +250,7 @@ const App = () => {
                     }
                 });
                 setexecutedStateArr(executedStateArray);
-                console.log("executedStateArr",data);
+                console.log("executedStateArr", data);
                 setLoading(false);
             }           // successful response
         });
@@ -305,9 +312,9 @@ const App = () => {
 
         usecaseList.forEach(e => {
             console.log(e);
-            if (e.usecaseName.S === useCaseName) {
-                setcurrentExecutionArn(e.executionArn.S)
-                console.log(e.executionArn);
+            if (e.usecasename === useCaseName) {
+                setcurrentExecutionArn(e.executionarn)
+                console.log(e.executionarn);
             }
         });
     }
@@ -327,9 +334,9 @@ const App = () => {
     }, [currentExecutionArn, machineStates, executedStateArr])
 
     useEffect(() => {
-       
+
     }, [executedStateArr])
-    
+
 
     return (
         <>
@@ -342,7 +349,7 @@ const App = () => {
                     <button className='btn btn-success m-2' onClick={executeStateMachine}>Execute Machine</button>
                     <button className='btn btn-primary m-2 mt-3' onClick={completeState}>Next Stage </button>
                     <textarea className='form-control' value={stepInput} onChange={e => setStepInput(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Input Here" />
-                    <button className='btn btn-info m-2 mt-3' onClick={usecaseInputToDynamoDb}>Send Input</button>
+                    <button className='btn btn-info m-2 mt-3' onClick={usecaseInputToDb}>Send Input</button>
 
                 </div>
 
@@ -364,7 +371,7 @@ const App = () => {
                             {executedStateArr.map(item => {
                                 return <li key={item}>{item}</li>
                             })}
-                            { loading && <h6 className='mt-1' style={{ color: "green" }}>Loading...</h6>}
+                            {loading && <h6 className='mt-1' style={{ color: "green" }}>Loading...</h6>}
                         </ul>
                     </div>
                 </div>
@@ -375,13 +382,11 @@ const App = () => {
                 <select className='form-select' onChange={e => setUseCaseName(e.target.value)} >
                     <option disabled selected>Select here</option>
                     {usecaseList.map(item => {
-                        return <option key={item.executionArn.S} value={item.usecaseName.S}>{item.usecaseName.S}</option>;
+                        return <option key={item.executionarn} value={item.usecaseaame}>{item.usecasename}</option>;
                     })}
                 </select>
 
-                {/* <h5 className='mt-5'>Current Execution Arn</h5> */}
                 <div>
-                    {/* <input className='form-control' type="text" value={currentExecutionArn} onChange={e => setcurrentExecutionArn(e.target.value)} placeholder="Here you'll see execution ARN" /> */}
                     <button className='btn btn-primary mt-3' onClick={pageUpdateFunc}>Select</button>
                 </div>
             </div>
@@ -397,6 +402,7 @@ const App = () => {
 
                 <button className='btn btn-primary m-2 mt-3' onClick={withKeepingStates}>Go To State </button>
             </div>
+
         </>
     );
 }
