@@ -17,38 +17,738 @@
 ### Definition of step-function
 It is a json to define a step-function ( Contains details of all steps ).
 
-#### This machine containes following steps
+## This machine containes following steps
 
-Step Name | Lambda-functions
------------|---------------------
-Requirement_Create_usecase_document  | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction1</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Requirement_Create_screen_design | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction2</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-*Requirement_Updating_usecase_in_netlifi | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction3</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Mock_development_Create_API_spec | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction4</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Mock_development_Create_postman_test | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction5</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Mock_development_Create_ui_screen_with_mock_API | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction6</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Mock_development_Create_test_API | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction7</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Data_design_github_page | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction8</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_API_source_code_in_github | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction9</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Populate_test_data_in_github | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction10</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Junit5_test_in_github | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction11</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Cucumber_BDD_tests_in_github | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction12</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Gatling_performance | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction13</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Code_review_with_tech_lead | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction14</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Actual_ui_api_integration | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction15</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Actual_development_Branch_merge_after_review | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction16</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Create_ci_cd_pipeline | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction17</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Create_kubernetes_operator | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction18</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Link_API_with_github_and_netlifi | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction19</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Upload_test_results_in_s3_website | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction20</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Upload_test_env_url_in_netlifi_site | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction21</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-CICD_Tests_Stage_after_review | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction22</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Stage_Release_Stage_test_and_review | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction23</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Stage_Release_Promot_to_prod | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction24</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Stage_Release_API_security_test_in_prod | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction25</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Stage_Release_Create_or_update_release_note | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction26</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Publish_And_Operate_Security_and_operation_readiness | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction27</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
-Publish_And_Operate_Release_note | <table> <tr><th>Name</th> <th>Work</th> <th>Input Json</th> </tr><tr><td>stepFunction28</td> <td>It gets token from state machine and save it to database. It is defined inside stepfunction definition.</td><td>```{ "executionArn" : "..." , "token" : "..." }```</td> </tr><tr><td>stepFunction_with_psql_usecase_input</td> <td>It saves the metadata of usecase inside database and github. ``` "stepInput" ``` is a single json of metadata for an usecase</td><td>```{ "usecaseName" : "..." , "stepInput" : "..."  } ```</td> </tr></table>
+
+1. <b> Requirements </b> 
+    * No. of substeps: 3 
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction1 &emsp; |&emsp;  stepFunction2 &emsp; | &emsp;  stepFunction3   &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+         {
+            "usecaseName" : "..."
+            "stepInput" : {
+                            "index": 0,
+                            "name": "Requirements",
+                            "description": "Requirements Description",
+                            "assignedTo": "5",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": false
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": false
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Create Usecase Document",
+                                    "assignto": "4",
+                                    "startDate": "2022-08-02",
+                                    "endDate": "2022-09-01",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "https://josie.name",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create Screen Design",
+                                    "assignto": "1",
+                                    "startDate": "2022-07-31",
+                                    "endDate": "2022-09-02",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Updating Usecase in Netlifi",
+                                    "assignto": "6",
+                                    "startDate": "2022-08-01",
+                                    "endDate": "2022-09-10",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "status": "inprogress"
+                        }
+         }
+        ```
+
+
+2. <b> Mock Development </b> 
+    * No. of substeps: 4
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction4 &emsp; |&emsp;  stepFunction5 &emsp; | &emsp;  stepFunction6 &emsp; | &emsp;  stepFunction7   &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+         {
+            "usecaseName" : "..."
+            "stepInput" : {
+                            "index": 1,
+                            "name": "Mock Development",
+                            "description": "Mock Development Description",
+                            "assignedTo": "3",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": true
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Create API Spec",
+                                    "assignto": "3",
+                                    "startDate": "2022-08-27",
+                                    "endDate": "2022-08-01",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create Postman Test",
+                                    "assignto": "8",
+                                    "startDate": "2022-08-05",
+                                    "endDate": "2022-07-31",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create UI Screen with Mock API",
+                                    "assignto": "6",
+                                    "startDate": "2022-08-02",
+                                    "endDate": "2022-08-04",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create Test API",
+                                    "assignto": "2",
+                                    "startDate": "2022-08-10",
+                                    "endDate": "2022-08-02",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+         }
+        ```
+
+3. <b> Actual Development </b> 
+    * No. of substeps: 9
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction8 &emsp; |&emsp;  stepFunction9 &emsp; | &emsp;  stepFunction10 &emsp; | &emsp;  stepFunction11 &emsp; | &emsp;  stepFunction12 &emsp; | &emsp;  stepFunction13 &emsp; | &emsp;  stepFunction14 &emsp; | &emsp;  stepFunction15 &emsp; | &emsp;  stepFunction16   &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+         {
+            "usecaseName" : "..."
+            "stepInput" : {
+                            "index": 2,
+                            "name": "Actual Development",
+                            "description": "Actual Development Description",
+                            "assignedTo": "3",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": true
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Data Design GitHub Page",
+                                    "assignto": "2",
+                                    "startDate": "2022-08-01",
+                                    "endDate": "2022-08-11",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "API Source Code in GitHub",
+                                    "assignto": "2",
+                                    "startDate": "2022-07-31",
+                                    "endDate": "2022-08-24",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Populate Test data in GitHub",
+                                    "assignto": "1",
+                                    "startDate": "2022-08-01",
+                                    "endDate": "2022-09-02",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Junit5 Test in GitHub",
+                                    "assignto": "2",
+                                    "startDate": "2022-08-21",
+                                    "endDate": "",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Cucumber BDD tests in GitHub",
+                                    "assignto": "2",
+                                    "startDate": "2022-08-01",
+                                    "endDate": "2022-09-10",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Gatling Performance",
+                                    "assignto": "4",
+                                    "startDate": "2022-08-08",
+                                    "endDate": "2022-09-10",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Code Review with Tech Lead",
+                                    "assignto": "6",
+                                    "startDate": "2022-07-31",
+                                    "endDate": "",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Actual UI-API Integration",
+                                    "assignto": "5",
+                                    "startDate": "2022-07-31",
+                                    "endDate": "2022-09-10",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Branch Merge after Review",
+                                    "assignto": "3",
+                                    "startDate": "2022-08-02",
+                                    "endDate": "2022-09-03",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+         }
+        ```
+
+4. <b> CI/CD/TEST </b> 
+    * No. of substeps: 6
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction17 &emsp; |&emsp;  stepFunction18 &emsp; | &emsp;  stepFunction19 &emsp; | &emsp;  stepFunction20 &emsp; | &emsp;  stepFunction21 &emsp; | &emsp;  stepFunction22 &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+        {
+            "usecaseName" : "...",
+            "stepInput" : {
+                            "index": 3,
+                            "name": "CI/CD/TEST",
+                            "description": "CI/CD/TEST Description",
+                            "assignedTo": "5",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": true
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Create CI/CD Pipeline",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create Kubernetes Operator",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Link API with GitHub and Netlifi",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Upload Test results in S3 Website",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Upload Test env URL in Netlifi site",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Stage after review",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, 
+         }
+        ```
+5. <b> Stage / Release </b> 
+    * No. of substeps: 4
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction23 &emsp; |&emsp;  stepFunction24 &emsp; | &emsp;  stepFunction25 &emsp; | &emsp;  stepFunction26 &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+        
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+         {
+            "usecaseName" : "...",
+            "stepInput" : {
+                            "index": 4,
+                            "name": "Stage / Release",
+                            "description": "Requirements Description",
+                            "assignedTo": "4",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": true
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Stage Test and Review",
+                                    "assignto": "5",
+                                    "startDate": "2022-08-16",
+                                    "endDate": "2022-08-31",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Promote to Prod",
+                                    "assignto": "4",
+                                    "startDate": "2022-09-07",
+                                    "endDate": "2022-08-01",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "API Security Test in Prod",
+                                    "assignto": "7",
+                                    "startDate": "2022-09-10",
+                                    "endDate": "2022-07-31",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Create/Update Release Note",
+                                    "assignto": "8",
+                                    "startDate": "2022-07-31",
+                                    "endDate": "2022-08-06",
+                                    "comments": "Requirement Sub-Stage details",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+         }
+        ```
+
+6. <b> Publish/Operate </b> 
+    * No. of substeps: 2
+    </br></br>
+
+    ####  Associated Lambdas
+    1.  <b> Name: </b>  &emsp; stepFunction27 &emsp; |&emsp;  stepFunction28 &emsp;-> respective to substeps  </br>
+        <b> Work: </b> It gets token from state machine and save it to database. It is defined inside stepfunction definition. Every substep will take same json input</br>
+        <b> Input Json: </b></br>
+
+        ```json
+        { 
+            "executionArn" : "..." ,
+            "token" : "..." 
+        }
+        ```
+        
+    2.  <b> Name: </b> stepFunction_with_psql_usecase_input </br>
+        <b> Work: </b> It takes only this stage input json and update it inside json of all steps. Every substep will take same json input </br>
+        <b> Input Json: </b> </br>
+
+        ```json
+        {
+            "usecaseName" : "...",
+            "stepInput" : {
+                            "index": 5  ,
+                            "name": "Publish/Operate",
+                            "description": "Publish/Operate Description",
+                            "assignedTo": "7",
+                            "workflowCheckList": [
+                                {
+                                    "label": "Finalized API Specification is available in GitHub",
+                                    "id": 3,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "API spec Review meeting is done with UI /API Team",
+                                    "id": 10,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "UI code is available in GitHub that works with Mock API",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                                    "id": 6,
+                                    "checked": true
+                                },
+                                {
+                                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                                    "id": 1,
+                                    "checked": true
+                                }
+                            ],
+                            "details": [
+                                {
+                                    "subStageName": "Security & Operation Readiness",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "subStageName": "Release Note",
+                                    "assignto": "",
+                                    "startDate": "",
+                                    "endDate": "",
+                                    "comments": "",
+                                    "data": [
+                                        {
+                                            "link": "",
+                                            "label": "Github link"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+        }
+        ```
+
+
 
 ### Lambda-callbacks
 Each step in step-function is associated with an lambda function and Lambda-callback means each step provies a <em><b> 'task token' </b> </em> to be success and step wait for the task to complete.
@@ -554,11 +1254,22 @@ const stepfunctions = new StepFunctions(credentials);
     ```
     1. It takes the selected step name and match it in the definition then makes all previous states as pass state and execute it. 
     ```
+4. Full usecase json structure
 
-4. Access key and secret keys are set into a .env.local file. This file is git ignored.
+    ```json
+    {
+        "name": "GENERAL TEST CASE",
+        "description": "",
+        "assignTo": "",
+        "stages": [ array of stages json... ]
+    }
+    ```
+
+5. Access key and secret keys are set into a .env.local file. This file is git ignored.
 
     ```js
     REACT_APP_ACCESS_KEY_ID = ""
     REACT_APP_SECRET_ACCESS_KEY = ""
     ```
    <em> ** Never commit and push 'Access_key' and 'Secret_access_key' directly into github ** </em>
+
