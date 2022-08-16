@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import demojson from './demo.json'
 let AWS = require('aws-sdk');
+const { Octokit } = require("octokit")
+
 
 
 const App = () => {
@@ -14,6 +16,10 @@ const App = () => {
     const [executedStateArr, setexecutedStateArr] = useState([]);
     const [stepInput, setStepInput] = useState(JSON.stringify(demojson));
     const [singleStepInput, setSingleStepInput] = useState('');
+    const [gitFileDataForAdd, setGitFileDataForAdd] = useState('')
+    const [gitFileDataForUpdate, setGitFileDataForUpdate] = useState('')
+    const [gitFileNameForAdd, setGitFileNameForAdd] = useState('')
+    const [gitFileNameForUpdate, setGitFileNameForUpdate] = useState('')
 
     const [useCaseName, setUseCaseName] = useState('')
     const [usecaseList, setUsecaseList] = useState([]);
@@ -30,6 +36,9 @@ const App = () => {
 
     const lambda = new AWS.Lambda(credentials);
     const stepfunctions = new StepFunctions(credentials);
+    const octokit = new Octokit({
+        auth: process.env.REACT_APP_GIT_ACCESS_TOKEN
+    })
 
     var describeSTparams = {
         stateMachineArn: originalMachineArn /* required */
@@ -345,6 +354,36 @@ const App = () => {
         });
     }
 
+    async function updateGitFile() {
+
+        const fileData = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+            owner: 'JitinSynectiks',
+            repo: 'testMd',
+            path: gitFileNameForUpdate,
+        })
+
+        octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+            owner: 'JitinSynectiks',
+            repo: 'testMd',
+            path: gitFileNameForUpdate,
+            message: 'my commit message',
+            content: window.btoa(gitFileDataForUpdate),
+            sha: fileData.data.sha
+        })
+    }
+
+    async function addGitFile() {
+
+        octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+            owner: 'JitinSynectiks',
+            repo: 'testMd',
+            path: gitFileNameForAdd,
+            message: 'my commit message',
+            content: window.btoa(gitFileDataForAdd),
+        })
+    }
+
+
     useEffect(() => {
         pageUpdateFunc();
         getUsecaseInputData();
@@ -405,7 +444,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-{/* 
+            {/* 
             <div className=' text-break myBox' >
                 <textarea className='form-control' value={stepInput} style={{ height: "200px", fontSize: "10px" }} placeholder="Full json will appear here" />
             </div> */}
@@ -434,6 +473,21 @@ const App = () => {
                 </select>
 
                 <button className='btn btn-primary m-2 mt-3' onClick={withKeepingStates}>Go To State </button>
+            </div>
+            <h3 className='m-4'>Opetations on git file</h3>
+            <div className=' text-break myBox d-flex justify-content-around' >
+                <div className='w-25'>
+                    <h5>Update git file</h5>
+                    <input className='form-control' type="text" value={gitFileNameForUpdate} onChange={e => setGitFileNameForUpdate(e.target.value)} placeholder='Git file name with extention' />
+                    <textarea className='form-control mt-3' value={gitFileDataForUpdate} onChange={e => setGitFileDataForUpdate(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Git file data" />
+                    <button className='btn btn-info m-2 mt-3' onClick={updateGitFile}>Update git file</button>
+                </div>
+                <div className='w-25'>
+                    <h5>Add git file</h5>
+                    <input className='form-control' type="text" value={gitFileNameForAdd} onChange={e => setGitFileNameForAdd(e.target.value)} placeholder='Git file name with extention' />
+                    <textarea className='form-control mt-3' value={gitFileDataForAdd} onChange={e => setGitFileDataForAdd(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Git file data" />
+                    <button className='btn btn-info m-2 mt-3' onClick={addGitFile}>Add git file</button>
+                </div>
             </div>
 
         </>
