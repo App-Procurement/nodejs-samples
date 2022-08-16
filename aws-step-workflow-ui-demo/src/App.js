@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import demojson from './demo.json'
 let AWS = require('aws-sdk');
 
 
@@ -11,7 +12,9 @@ const App = () => {
     const [machineStates, setmachineStates] = useState([]);
     const [currentExecutionArn, setcurrentExecutionArn] = useState('');
     const [executedStateArr, setexecutedStateArr] = useState([]);
-    const [stepInput, setStepInput] = useState('');
+    const [stepInput, setStepInput] = useState(JSON.stringify(demojson));
+    const [singleStepInput, setSingleStepInput] = useState('');
+
     const [useCaseName, setUseCaseName] = useState('')
     const [usecaseList, setUsecaseList] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -55,9 +58,9 @@ const App = () => {
         });
     }
 
-    function usecaseInputToDb() {
+    function addJsonOnExecution() {
         let inputForpg = {
-            stepInput: stepInput,
+            stepInput: JSON.parse(stepInput),
             usecaseName: useCaseName
         };
 
@@ -75,6 +78,28 @@ const App = () => {
 
     }
 
+    function usecaseInputToDb() {
+
+        let inputForpg = {
+            stepInput: JSON.parse(singleStepInput),
+            usecaseName: useCaseName
+        };
+
+        var pgParams1 = {
+
+            FunctionName: 'stepFunction_with_psql_usecase_input', /* required */
+            Payload: JSON.stringify(inputForpg)
+
+        };
+
+        lambda.invoke(pgParams1, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else console.log("from pg", data);           // successful response
+        });
+
+        getUsecaseInputData();
+    }
+
     function executeStateMachine() {
         stepfunctions.startExecution(params, (err, data) => {
             if (err) {
@@ -90,7 +115,8 @@ const App = () => {
                 setcurrentExecutionArn(data.executionArn);
                 gettingMachineDef();
                 usecaseArnToDb(data.executionArn);
-                usecaseInputToDb();
+                // usecaseInputToDb();
+                addJsonOnExecution();
                 const response = {
                     statusCode: 200,
                     body: JSON.stringify({
@@ -214,7 +240,7 @@ const App = () => {
 
                 JSON.parse(data.Payload).forEach(e => {
                     if (e.usecasename === useCaseName) {
-                        setStepInput(e.stepinput);
+                        setStepInput(JSON.stringify(e.stepinput));
                     }
 
                 });
@@ -348,10 +374,13 @@ const App = () => {
                     <input type="text" className='form-control' value={useCaseName} onChange={e => setUseCaseName(e.target.value)} placeholder="Enter Usecase Name Here" />
                     <button className='btn btn-success m-2' onClick={executeStateMachine}>Execute Machine</button>
                     <button className='btn btn-primary m-2 mt-3' onClick={completeState}>Next Stage </button>
-                    <textarea className='form-control' value={stepInput} onChange={e => setStepInput(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Input Here" />
-                    <button className='btn btn-info m-2 mt-3' onClick={usecaseInputToDb}>Send Input</button>
+                    {/* <textarea className='form-control' value={stepInput} style={{ height: "200px", fontSize: "10px" }} placeholder="Full json will appear here" /> */}
+                    <textarea className='form-control mt-3' value={singleStepInput} onChange={e => setSingleStepInput(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Input Here" />
+                    <button className='btn btn-info m-2 mt-3' onClick={usecaseInputToDb}>update stage</button>
 
                 </div>
+
+
 
                 <div className='myBox' style={{ width: "550px" }}>
                     <h5>This is machine</h5>
@@ -376,6 +405,10 @@ const App = () => {
                     </div>
                 </div>
             </div>
+{/* 
+            <div className=' text-break myBox' >
+                <textarea className='form-control' value={stepInput} style={{ height: "200px", fontSize: "10px" }} placeholder="Full json will appear here" />
+            </div> */}
 
             <div className=' text-break myBox' >
                 <h6>Usecase list</h6>
