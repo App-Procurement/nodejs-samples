@@ -1,4 +1,4 @@
-# catalogue-service api-listing 
+# Catalogue-Service workflow
 
 ### `yarn start`
 
