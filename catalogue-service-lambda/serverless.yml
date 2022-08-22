@@ -1,0 +1,51 @@
+service: aws-node-http-api-project
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  stage: dev
+  timeout: 15
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  add_service_details:
+    handler: add_service_details.add_service_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  upadte_serivce_details:
+    handler: upadte_serivce_details.upadte_serivce_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  delete_service_details:
+    handler: delete_service_details.delete_service_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  add_multi_json_service_details:
+    handler: add_multi_json_service_details.add_multi_json_service_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  search_service_details:
+    handler: search_service_details.search_service_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  append_key_service_details:
+    handler: append_key_service_details.append_key_service_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw 
+  upadte_serivce_key:
+    handler: upadte_serivce_key.upadte_serivce_key
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  add_catalogues_details:
+    handler: add_catalogues_details.add_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  append_key_catalogues_details:
+    handler: append_key_catalogues_details.append_key_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  delete_catalogues_details:
+    handler: delete_catalogues_details.delete_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  get_all_catalogues_details:
+    handler: get_all_catalogues_details.get_all_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  search_catalogues_details:
+    handler: search_catalogues_details.search_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  update_catalogues_details:
+    handler: update_catalogues_details.update_catalogues_details
+    role: arn:aws:iam::<ac_id>:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+
