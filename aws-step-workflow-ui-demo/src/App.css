@@ -43,3 +43,8 @@
   box-shadow: 0 0 30px -3px gray;
   margin: 20px;
 }
+
+.useWarn{
+  font-size: small;
+  color: red;
+}

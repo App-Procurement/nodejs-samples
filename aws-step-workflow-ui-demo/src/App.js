@@ -16,6 +16,7 @@ const App = () => {
     const [executedStateArr, setexecutedStateArr] = useState([]);
     const [stepInput, setStepInput] = useState(JSON.stringify(demojson));
     const [singleStepInput, setSingleStepInput] = useState('');
+
     const [gitFileDataForAdd, setGitFileDataForAdd] = useState('')
     const [gitFileDataForUpdate, setGitFileDataForUpdate] = useState('')
     const [gitFileNameForAdd, setGitFileNameForAdd] = useState('')
@@ -89,54 +90,70 @@ const App = () => {
 
     function usecaseInputToDb() {
 
-        let inputForpg = {
-            stepInput: JSON.parse(singleStepInput),
-            usecaseName: useCaseName
-        };
+        if (useCaseName == '') {
 
-        var pgParams1 = {
+            document.getElementById("usecaseConstraint").innerHTML = "Please, give an usecase name"
+      
+        }
+        else {
 
-            FunctionName: 'stepFunction_with_psql_usecase_input', /* required */
-            Payload: JSON.stringify(inputForpg)
 
-        };
+            let inputForpg = {
+                stepInput: JSON.parse(singleStepInput),
+                usecaseName: useCaseName
+            };
 
-        lambda.invoke(pgParams1, function (err, data) {
-            if (err) console.log(err, err.stack); // an error occurred
-            else console.log("from pg", data);           // successful response
-        });
+            var pgParams1 = {
 
-        getUsecaseInputData();
+                FunctionName: 'stepFunction_with_psql_usecase_input', /* required */
+                Payload: JSON.stringify(inputForpg)
+
+            };
+
+            lambda.invoke(pgParams1, function (err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else console.log("from pg", data);           // successful response
+            });
+
+            getUsecaseInputData();
+        }
     }
 
     function executeStateMachine() {
-        stepfunctions.startExecution(params, (err, data) => {
-            if (err) {
-                console.log(err);
-                const response = {
-                    statusCode: 500,
-                    body: JSON.stringify({
-                        message: 'There was an error'
-                    })
-                };
-                // callback(null, response);
-            } else {
-                setcurrentExecutionArn(data.executionArn);
-                gettingMachineDef();
-                usecaseArnToDb(data.executionArn);
-                // usecaseInputToDb();
-                addJsonOnExecution();
-                const response = {
-                    statusCode: 200,
-                    body: JSON.stringify({
-                        message: 'Step function worked'
-                    })
-                };
-                // callback(null, response);
 
-                gettingExecutionHistory(data.executionArn);
-            }
-        });
+        if (useCaseName == '') {
+            document.getElementById("usecaseConstraint").innerHTML = "Please, give an usecase name"
+        } else {
+
+
+            stepfunctions.startExecution(params, (err, data) => {
+                if (err) {
+                    console.log(err);
+                    const response = {
+                        statusCode: 500,
+                        body: JSON.stringify({
+                            message: 'There was an error'
+                        })
+                    };
+                    // callback(null, response);
+                } else {
+                    setcurrentExecutionArn(data.executionArn);
+                    gettingMachineDef();
+                    usecaseArnToDb(data.executionArn);
+                    // usecaseInputToDb();
+                    addJsonOnExecution();
+                    const response = {
+                        statusCode: 200,
+                        body: JSON.stringify({
+                            message: 'Step function worked'
+                        })
+                    };
+                    // callback(null, response);
+
+                    gettingExecutionHistory(data.executionArn);
+                }
+            });
+        }
     }
     function executeStateMachine2(exeArn) {
 
@@ -384,6 +401,12 @@ const App = () => {
     }
 
 
+    function handleUsecaseName(e) {
+        setUseCaseName(e.target.value);
+        document.getElementById("usecaseConstraint").innerHTML = ""
+
+    }
+
     useEffect(() => {
         pageUpdateFunc();
         getUsecaseInputData();
@@ -410,7 +433,8 @@ const App = () => {
             <div className='d-flex'>
 
                 <div className='d-flex flex-column myBox' style={{ width: "300px" }}>
-                    <input type="text" className='form-control' value={useCaseName} onChange={e => setUseCaseName(e.target.value)} placeholder="Enter Usecase Name Here" />
+                    <p id="usecaseConstraint" className='useWarn' ></p>
+                    <input type="text" className='form-control' value={useCaseName} onChange={handleUsecaseName} placeholder="Enter Usecase Name Here" />
                     <button className='btn btn-success m-2' onClick={executeStateMachine}>Execute Machine</button>
                     <button className='btn btn-primary m-2 mt-3' onClick={completeState}>Next Stage </button>
                     {/* <textarea className='form-control' value={stepInput} style={{ height: "200px", fontSize: "10px" }} placeholder="Full json will appear here" /> */}
