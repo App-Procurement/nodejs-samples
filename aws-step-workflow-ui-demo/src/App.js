@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import demojson from './demo.json'
+import demoUpdateJson from './demoUpdate.json'
 let AWS = require('aws-sdk');
 const { Octokit } = require("octokit")
 
@@ -86,6 +87,26 @@ const App = () => {
             else console.log("from pg", data);           // successful response
         });
 
+    }
+
+    function updateUsecaseWholeData(){
+
+        let inputForpg = {
+            stepInput: demoUpdateJson,
+            usecaseName: useCaseName
+        };
+
+        var pgParams1 = {
+
+            FunctionName: 'stepFunction_with_psql_usecase_whole_update', /* required */
+            Payload: JSON.stringify(inputForpg)
+
+        };
+
+        lambda.invoke(pgParams1, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else console.log("from pg", data);           // successful response
+        });
     }
 
     function usecaseInputToDb() {
@@ -440,6 +461,9 @@ const App = () => {
                     {/* <textarea className='form-control' value={stepInput} style={{ height: "200px", fontSize: "10px" }} placeholder="Full json will appear here" /> */}
                     <textarea className='form-control mt-3' value={singleStepInput} onChange={e => setSingleStepInput(e.target.value)} style={{ height: "200px", fontSize: "10px" }} placeholder="Input Here" />
                     <button className='btn btn-info m-2 mt-3' onClick={usecaseInputToDb}>update stage</button>
+                    <hr />
+                    <button className='btn btn-warning m-2 mt-3' onClick={updateUsecaseWholeData}>Update whole json</button>
+                    <p className="metaJsonWrn">New json for update is set inside react code</p>
 
                 </div>
 

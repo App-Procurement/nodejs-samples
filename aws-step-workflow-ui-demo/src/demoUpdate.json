@@ -1,0 +1,582 @@
+{
+    "name": "Updated Name",
+    "description": "",
+    "assignTo": "",
+    "stages": [
+        {
+            "index": 0,
+            "name": "Requirements",
+            "description": "Requirements Description",
+            "assignedTo": "5",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": false
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": false
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Create Usecase Document",
+                    "assignto": "4",
+                    "startDate": "2022-08-02",
+                    "endDate": "2022-09-01",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "https://josie.name",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create Screen Design",
+                    "assignto": "1",
+                    "startDate": "2022-07-31",
+                    "endDate": "2022-09-02",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Updating Usecase in Netlifi",
+                    "assignto": "6",
+                    "startDate": "2022-08-01",
+                    "endDate": "2022-09-10",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ],
+            "status": "inprogress"
+        },
+        {
+            "index": 1,
+            "name": "Mock Development",
+            "description": "Mock Development Description",
+            "assignedTo": "3",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": true
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Create API Spec",
+                    "assignto": "3",
+                    "startDate": "2022-08-27",
+                    "endDate": "2022-08-01",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create Postman Test",
+                    "assignto": "8",
+                    "startDate": "2022-08-05",
+                    "endDate": "2022-07-31",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create UI Screen with Mock API",
+                    "assignto": "6",
+                    "startDate": "2022-08-02",
+                    "endDate": "2022-08-04",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create Test API",
+                    "assignto": "2",
+                    "startDate": "2022-08-10",
+                    "endDate": "2022-08-02",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "name": "Actual Development",
+            "description": "Actual Development Description",
+            "assignedTo": "3",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": true
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Data Design GitHub Page",
+                    "assignto": "2",
+                    "startDate": "2022-08-01",
+                    "endDate": "2022-08-11",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "API Source Code in GitHub",
+                    "assignto": "2",
+                    "startDate": "2022-07-31",
+                    "endDate": "2022-08-24",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Populate Test data in GitHub",
+                    "assignto": "1",
+                    "startDate": "2022-08-01",
+                    "endDate": "2022-09-02",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Junit5 Test in GitHub",
+                    "assignto": "2",
+                    "startDate": "2022-08-21",
+                    "endDate": "",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Cucumber BDD tests in GitHub",
+                    "assignto": "2",
+                    "startDate": "2022-08-01",
+                    "endDate": "2022-09-10",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Gatling Performance",
+                    "assignto": "4",
+                    "startDate": "2022-08-08",
+                    "endDate": "2022-09-10",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Code Review with Tech Lead",
+                    "assignto": "6",
+                    "startDate": "2022-07-31",
+                    "endDate": "",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Actual UI-API Integration",
+                    "assignto": "5",
+                    "startDate": "2022-07-31",
+                    "endDate": "2022-09-10",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Branch Merge after Review",
+                    "assignto": "3",
+                    "startDate": "2022-08-02",
+                    "endDate": "2022-09-03",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": 3,
+            "name": "CI/CD/TEST",
+            "description": "CI/CD/TEST Description",
+            "assignedTo": "5",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": true
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Create CI/CD Pipeline",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create Kubernetes Operator",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Link API with GitHub and Netlifi",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Upload Test results in S3 Website",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Upload Test env URL in Netlifi site",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Stage after review",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "name": "Stage / Release",
+            "description": "Requirements Description",
+            "assignedTo": "4",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": true
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Stage Test and Review",
+                    "assignto": "5",
+                    "startDate": "2022-08-16",
+                    "endDate": "2022-08-31",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Promote to Prod",
+                    "assignto": "4",
+                    "startDate": "2022-09-07",
+                    "endDate": "2022-08-01",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "API Security Test in Prod",
+                    "assignto": "7",
+                    "startDate": "2022-09-10",
+                    "endDate": "2022-07-31",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Create/Update Release Note",
+                    "assignto": "8",
+                    "startDate": "2022-07-31",
+                    "endDate": "2022-08-06",
+                    "comments": "Requirement Sub-Stage details",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": 5,
+            "name": "Publish/Operate",
+            "description": "Publish/Operate Description",
+            "assignedTo": "7",
+            "workflowCheckList": [
+                {
+                    "label": "Finalized API Specification is available in GitHub",
+                    "id": 3,
+                    "checked": true
+                },
+                {
+                    "label": "API spec Review meeting is done with UI /API Team",
+                    "id": 10,
+                    "checked": true
+                },
+                {
+                    "label": "UI code is available in GitHub that works with Mock API",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "The code has adequate build / test instructions to run mock server and review UI",
+                    "id": 6,
+                    "checked": true
+                },
+                {
+                    "label": "Test Plans is available in Git and its stitched in netlify site in Use Cases Matrix",
+                    "id": 1,
+                    "checked": true
+                }
+            ],
+            "details": [
+                {
+                    "subStageName": "Security & Operation Readiness",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                },
+                {
+                    "subStageName": "Release Note",
+                    "assignto": "",
+                    "startDate": "",
+                    "endDate": "",
+                    "comments": "",
+                    "data": [
+                        {
+                            "link": "",
+                            "label": "Github link"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

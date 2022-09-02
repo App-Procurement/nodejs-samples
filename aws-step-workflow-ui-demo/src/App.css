@@ -48,3 +48,8 @@
   font-size: small;
   color: red;
 }
+
+.metaJsonWrn{
+  font-size: 11px;
+  color: gray;
+}
