@@ -1,0 +1,80 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lamda local demo
+
+
+services:
+  db:
+    container_name: 'db1'
+    image: postgres
+    ports:
+      - "5432:5432"
+  
+Resources:
+  AddServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: add_service_details.add_service_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
+  AddAllServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: add_multi_json_service_details.add_multi_json_service_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x  
+  UpdateServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: upadte_serivce_details.upadte_serivce_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x  
+  SearchServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: search_service_details.search_service_details # format is filename.functionName
+      Runtime: nodejs16.x
+      Timeout: 10
+  AppendServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: append_key_service_details.append_key_service_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x  
+  DeleteServiceFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: delete_service_details.delete_service_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x 
+  AddCataloguesFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: add_catalogues_details.add_catalogues_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
+  GetAllCataloguesFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: get_all_catalogues_details.get_all_catalogues_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
+  SearchCataloguesFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: search_catalogues_details.search_catalogues_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
+  AppendCataloguesFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: append_key_catalogues_details.append_key_catalogues_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
+  DeleteCataloguesFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Handler: delete_catalogues_details.delete_catalogues_details # format is filename.functionName
+      Timeout: 10
+      Runtime: nodejs16.x
