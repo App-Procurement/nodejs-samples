@@ -1,4 +1,4 @@
-exports.add_invoice = async (event, context, callback) => {
+exports.add_quotation = async (event, context, callback) => {
 
     const { Client } = require('pg');
 
@@ -13,7 +13,7 @@ exports.add_invoice = async (event, context, callback) => {
 
     let objReturn = {
         code: 200,
-        message: "invoice added successfully",
+        message: "quotation added successfully",
         type: "object",
         object: []
     };
@@ -22,7 +22,7 @@ exports.add_invoice = async (event, context, callback) => {
             return null;
         } else {
 
-            await client.query(`insert into invoice ("details") VALUES ($1::jsonb)`, [event]);
+            await client.query(`insert into quotation ("details") VALUES ($1::jsonb)`, [event]);
         }
 
         client.end();

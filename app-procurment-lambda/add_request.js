@@ -6,14 +6,14 @@ exports.add_request = async (event, context, callback) => {
         host: "postgresql.ch8wfucynpvq.us-east-1.rds.amazonaws.com",
         port: "5431",
         database: "procurement",
-        user: "",
-        password: ""
+        user: "postgres",
+        password: "P0$tGr3$&s3qua1$n3t!k5"
     });
     client.connect();
 
     let objReturn = {
         code: 200,
-        message: "success",
+        message: "request added successfully",
         type: "object",
         object: []
     };

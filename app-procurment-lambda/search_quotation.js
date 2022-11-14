@@ -1,4 +1,4 @@
-exports.search_invoice = async (event, context, callback) => {
+exports.search_quotation = async (event, context, callback) => {
 
     const { Client } = require('pg');
 
@@ -18,13 +18,13 @@ exports.search_invoice = async (event, context, callback) => {
     }
     
     const filters = data;
+    
     let keysArr = Object.keys(filters);
     let valueArr = Object.values(filters);
     let abc;
-    
     let objReturn = {
         code: 200,
-        message: "invoice search successfully",
+        message: "quotation search successfully",
         type: "object",
         object: []
     };
@@ -32,20 +32,19 @@ exports.search_invoice = async (event, context, callback) => {
     try {
         if (JSON.stringify(data) === '{}') {
 
-            abc = await client.query(`SELECT * FROM invoice`);
+            abc = await client.query(`SELECT * FROM quotation`);
         } else if (data.id) {
 
-            abc = await client.query(`SELECT * FROM invoice WHERE id=$1`, [data.id]);
+            abc = await client.query(`SELECT * FROM quotation WHERE id=$1`, [data.id]);
         }
         else {
 
             for (let item of keysArr) {
-             
-                abc = await client.query(`SELECT * FROM invoice WHERE details->$1 @> $2`, [item, JSON.stringify(valueArr[keysArr.indexOf(item)])]);
+
+                abc = await client.query(`SELECT * FROM quotation WHERE details->$1 @> $2`, [item, JSON.stringify(valueArr[keysArr.indexOf(item)])]);
             }
 
         }
-        
         objReturn.object = abc.rows;
         client.end();
 
@@ -72,6 +71,7 @@ exports.search_invoice = async (event, context, callback) => {
         };
 
     }
+
 };
 
 

@@ -6,32 +6,68 @@ exports.search_currency = async (event, context, callback) => {
         host: "postgresql.ch8wfucynpvq.us-east-1.rds.amazonaws.com",
         port: "5431",
         database: "procurement",
-        user: "",
-        password: ""
+        user:"postgres",
+        password: "P0$tGr3$&s3qua1$n3t!k5"
     });
+    
     client.connect();
-    const filters = event;
+    
+    let data = {};
+    
+    if ( event.queryStringParameters) {
+        data =  event.queryStringParameters;
+    }
+    
+    const filters = data;
     let keysArr = Object.keys(filters);
     let valueArr = Object.values(filters);
     let abc;
+    let objReturn = {
+        code: 200,
+        message: "currency search successfully",
+        type: "object",
+        object: []
+    };
 
-    if (JSON.stringify(event) === '{}') {
+    try {
+        if (JSON.stringify(data) === '{}') {
 
-        abc = await client.query(`SELECT * FROM currency`);
-    }
-    else {
+            abc = await client.query(`SELECT * FROM currency`);
+        } else if (data.id) {
 
-        for (let item of keysArr) {
+            abc = await client.query(`SELECT * FROM currency WHERE id=$1`, [data.id]);
+        }
+        else {
 
-            abc = await client.query(`SELECT * FROM currency WHERE details->$1 @> $2`, [item, JSON.stringify(valueArr[keysArr.indexOf(item)])]);
-
+            for (let item of keysArr) {
+                abc = await client.query(`SELECT * FROM currency WHERE details->$1 @> $2`, [item, JSON.stringify(valueArr[keysArr.indexOf(item)])]);
+            }
 
         }
-    }
-    client.end();
+            objReturn.object = abc.rows;
+            client.end();
+    
+            return {
+                "statusCode": 200,
+                 "headers": {
+                    "Access-Control-Allow-Origin":"*"
+                },
+                "body": JSON.stringify(objReturn) 
+            };
+            
+        } catch (e) {
 
-    return abc.rows;
-
+            objReturn.code = 400;
+            objReturn.message = e;
+            client.end();
+             return {
+                "statusCode": 400,
+                "headers": {
+                    "Access-Control-Allow-Origin":"*"
+                },
+                "body": JSON.stringify(objReturn) 
+            };
+        }
 };
 
 

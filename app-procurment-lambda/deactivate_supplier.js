@@ -1,4 +1,4 @@
-exports.upadte_request = async (event, context, callback) => {
+exports.deactivate_supplier = async (event, context, callback) => {
 
     const { Client } = require('pg');
 
@@ -14,7 +14,7 @@ exports.upadte_request = async (event, context, callback) => {
 
     let objReturn = {
         code: 200,
-        message: "request successfully updated",
+        message: "supplier successfully deactivate",
         type: "object",
         object: []
     };
@@ -22,7 +22,7 @@ exports.upadte_request = async (event, context, callback) => {
     try {
 
         if (event.id) {
-            const res = await client.query(`UPDATE request SET details= $1::jsonb WHERE id = $2`, [event.details, event.id]);
+            const res = await client.query(`UPDATE supplier SET details = jsonb_set(details, '{status}', '"DEACTIVATED"') WHERE id=$1`, [event.id]);
 
             if (res.rowCount == 1) {
 

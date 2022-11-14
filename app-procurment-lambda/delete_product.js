@@ -6,30 +6,53 @@ exports.delete_product = async (event, context, callback) => {
         host: "postgresql.ch8wfucynpvq.us-east-1.rds.amazonaws.com",
         port: "5431",
         database: "procurement",
-        user: "",
-        password: ""
+        user:"postgres",
+        password: "P0$tGr3$&s3qua1$n3t!k5"
     });
 
     client.connect();
-    let allData;
-    // let id = event.deleteInput.id;
-    if (JSON.stringify(event) === '{}') {
-        return null;
-    }
-    else {
-        allData = await client.query("SELECT * FROM product");
 
-        allData.rows[0].details.forEach((e, index) => {
-            if (e.productId == event.productId) {
-                allData.rows[0].details.splice(index, 1);
+    let objReturn = {
+        code: 200,
+        message: "product delete successfully",
+        type: "object",
+        object: []
+    };
+
+    try {
+        if (event.id) {
+
+            const res = await client.query(`DELETE FROM product WHERE id = $1`, [event.id]);
+
+            if (res.rowCount == 1) {
+
+                return objReturn;
+
+            } else {
+
+                objReturn.code = 801;
+                objReturn.message = "id does not exist";
+
+                client.end();
+                return objReturn;
             }
-        });
-        await client.query("UPDATE product SET details= $1 WHERE id = $2", [JSON.stringify(allData.rows[0].details), 500]);
+
+        } else {
+
+            objReturn.code = 802;
+            objReturn.message = "input json must have an 'id' field";
+
+            client.end();
+            return objReturn;
+        }
+
+
+    } catch (e) {
+        objReturn.code = 400;
+        objReturn.message = e;
+        client.end();
+        return objReturn;
     }
-
-    client.end();
-
-    return allData.rows[0].details;
 
 };
 

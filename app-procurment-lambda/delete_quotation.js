@@ -1,4 +1,4 @@
-exports.upadte_request = async (event, context, callback) => {
+exports.delete_quotation = async (event, context, callback) => {
 
     const { Client } = require('pg');
 
@@ -14,15 +14,15 @@ exports.upadte_request = async (event, context, callback) => {
 
     let objReturn = {
         code: 200,
-        message: "request successfully updated",
+        message: "quotation delete successfully",
         type: "object",
         object: []
     };
 
     try {
-
         if (event.id) {
-            const res = await client.query(`UPDATE request SET details= $1::jsonb WHERE id = $2`, [event.details, event.id]);
+
+            const res = await client.query(`DELETE FROM quotation WHERE id = $1`, [event.id]);
 
             if (res.rowCount == 1) {
 
@@ -46,14 +46,13 @@ exports.upadte_request = async (event, context, callback) => {
             return objReturn;
         }
 
-    } catch (e) {
 
+    } catch (e) {
         objReturn.code = 400;
         objReturn.message = e;
         client.end();
         return objReturn;
     }
-
 
 };
 

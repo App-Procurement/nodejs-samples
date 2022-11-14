@@ -1,14 +1,14 @@
 {
   "name": "new-folder-(6)",
   "version": "1.0.0",
-  "description": "",
+  "description": "P0$tGr3$&s3qua1$n3t!k5",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "deploy":"serverless deploy"
   },
   "keywords": [],
-  "author": "",
+  "author": "P0$tGr3$&s3qua1$n3t!k5",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
