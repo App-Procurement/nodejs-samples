@@ -130,3 +130,42 @@ functions:
   DeactivateQuotation:
     handler: deactivate_quotation.deactivate_quotation 
     role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+
+
+  AddApprovers:
+    handler: add_approvers.add_approvers 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  DeleteApprovers:
+    handler: delete_approvers.delete_approvers 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  SearchApprovers:
+    handler: search_approvers.search_approvers 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  UpdateApprovers:
+    handler: upadte_approvers.upadte_approvers
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  DeactivateApprovers:
+    handler: deactivate_approvers.deactivate_approvers 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+
+
+  AddCompanyProfile:
+    handler: add_company_profile.add_company_profile 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  DeleteCompanyProfile:
+    handler: delete_company_profile.delete_company_profile 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  SearchCompanyProfile:
+    handler: search_company_profile.search_company_profile 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  UpdateCompanyProfile:
+    handler: upadte_company_profile.upadte_company_profile
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+  DeactivateCompanyProfile:
+    handler: deactivate_company_profile.deactivate_company_profile 
+    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+
+
+  SearchSentEmails:
+      handler: search_sent_emails.search_sent_emails 
+      role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
