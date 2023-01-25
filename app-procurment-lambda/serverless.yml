@@ -1,5 +1,10 @@
-service: procurment
+service: procurement
 frameworkVersion: '3'
+
+useDotenv: true
+
+plugins: 
+  - serverless-offline
 
 provider:
   name: aws
@@ -8,164 +13,474 @@ provider:
   runtime: nodejs14.x
   region: us-east-1
 
+
 functions:
+
+  # Request configuration
+  # Add request
   AddRequest:
-    handler: add_request.add_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/add_request.add_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: post
+        integration: lambda
+
+  # Delete request
   DeleteRequest:
-    handler: delete_request.delete_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/delete_request.delete_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: delete
+        integration: lambda
+
+  # Search request
   SearchRequest:
-    handler: search_request.search_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/search_request.search_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: get
+
+  # Update request
   UpdateRequest:
-    handler: upadte_request.upadte_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/upadte_request.upadte_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: put
+        integration: lambda
+
+  # Deactivate request
   DeactivateRequest:
-    handler: deactivate_request.deactivate_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/deactivate_request.deactivate_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request/deactivate
+        method: post
+        integration: lambda
 
-
-  AddSupplier:
-    handler: add_supplier.add_supplier 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeleteSupplier:
-    handler: delete_supplier.delete_supplier 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  SearchSupplier:
-    handler: search_supplier.search_supplier 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  UpdateSupplier:
-    handler: upadte_supplier.upadte_supplier 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivateSupplier:
-    handler: deactivate_supplier.deactivate_supplier 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-
-
-
-  AddProduct:
-    handler: add_product.add_product 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeleteProduct:
-    handler: delete_product.delete_product 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  SearchProduct:
-    handler: search_product.search_product 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  UpdateProduct:
-    handler: upadte_product.upadte_product 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivateProduct:
-    handler: deactivate_product.deactivate_product 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-
-
-  AddCurrency:
-    handler: add_currency.add_currency 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeleteCurrency:
-    handler: delete_currency.delete_currency 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  SearchCurrency:
-    handler: search_currency.search_currency 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  UpdateCurrency:
-    handler: upadte_currency.upadte_currency 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivateCurrency:
-    handler: deactivate_currency.deactivate_currency 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-
-  AddInvoice:
-    handler: add_invoice.add_invoice 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeleteInvoice:
-    handler: delete_invoice.delete_invoice 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  SearchInvoice:
-    handler: search_invoice.search_invoice 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  UpdateInvoice:
-    handler: upadte_invoice.upadte_invoice 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivateInvoice:
-    handler: deactivate_invoice.deactivate_invoice 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-
-
-  AddPurchaseOrder:
-    handler: add_purchase_order.add_purchase_order 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeletePurchaseOrder:
-    handler: delete_purchase_order.delete_purchase_order 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  SearchPurchaseOrder:
-    handler: search_purchase_order.search_purchase_order 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  UpdatePurchaseOrder:
-    handler: upadte_purchase_order.upadte_purchase_order 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivatePurchaseOrder:
-    handler: deactivate_purchase_order.deactivate_purchase_order 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-
-
+  # Approve request
   ApproveRequest:
-    handler: approve_request.approve_request 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: request/approve_request.approve_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request/approve
+        method: post
+        integration: lambda
 
+
+  # Supplier configuration
+  # Add supplier
+  AddSupplier:
+    handler: supplier/add_supplier.add_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: post
+        integration: lambda
+
+  # Delete supplier
+  DeleteSupplier:
+    handler: supplier/delete_supplier.delete_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: delete
+        integration: lambda
+
+  # Search supplier
+  SearchSupplier:
+    handler: supplier/search_supplier.search_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: get
+
+  # Update supplier
+  UpdateSupplier:
+    handler: supplier/upadte_supplier.upadte_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: put
+        integration: lambda
+
+  # Deactivate Supplier
+  DeactivateSupplier:
+    handler: supplier/deactivate_supplier.deactivate_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier/deactivate
+        method: post
+        integration: lambda
+
+
+  # Product configuration
+  # Add product
+  AddProduct:
+    handler: product/add_product.add_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: post
+        integration: lambda
+
+  # Delete product
+  DeleteProduct:
+    handler: product/delete_product.delete_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: delete
+        integration: lambda
+    
+  # Search product
+  SearchProduct:
+    handler: product/search_product.search_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: get
+
+  # Update product
+  UpdateProduct:
+    handler: product/upadte_product.upadte_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: put
+        integration: lambda
+
+  # Deactivate product
+  DeactivateProduct:
+    handler: product/deactivate_product.deactivate_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product/deactivate
+        method: post
+        integration: lambda
+
+
+  # Currency configuration
+  # Add currency
+  AddCurrency:
+    handler: currency/add_currency.add_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: post
+        integration: lambda
+
+  # Delete currency
+  DeleteCurrency:
+    handler: currency/delete_currency.delete_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: delete
+        integration: lambda
+
+  # Search currency
+  SearchCurrency:
+    handler: currency/search_currency.search_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: get
+
+  # Update currency
+  UpdateCurrency:
+    handler: currency/upadte_currency.upadte_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: put
+        integration: lambda
+
+  # Deactivate currency
+  DeactivateCurrency:
+    handler: currency/deactivate_currency.deactivate_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency/deactivate
+        method: post
+        integration: lambda
+
+
+  #  Invoice configuration
+  # Add invoice
+  AddInvoice:
+    handler: invoice/add_invoice.add_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: post
+        integration: lambda
+
+  # Delete invoice
+  DeleteInvoice:
+    handler: invoice/delete_invoice.delete_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: delete
+        integration: lambda
+
+  # Search invoice
+  SearchInvoice:
+    handler: invoice/search_invoice.search_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: get
+
+  # Update invoice
+  UpdateInvoice:
+    handler: invoice/upadte_invoice.upadte_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: put
+        integration: lambda
+
+  # Deactivate invoice
+  DeactivateInvoice:
+    handler: invoice/deactivate_invoice.deactivate_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice/deactivate
+        method: post
+        integration: lambda
+
+
+  # Purchase Order configuration
+  # Add purchase_order
+  AddPurchaseOrder:
+    handler: purchase_order/add_purchase_order.add_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: post
+        integration: lambda
+
+  # Delete purchase_order
+  DeletePurchaseOrder:
+    handler: purchase_order/delete_purchase_order.delete_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: delete
+        integration: lambda
+    
+  # Search purchase_order
+  SearchPurchaseOrder:
+    handler: purchase_order/search_purchase_order.search_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: get
+
+  # Update purchase_order
+  UpdatePurchaseOrder:
+    handler: purchase_order/upadte_purchase_order.upadte_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: put
+        integration: lambda
+  
+  # Deactivate purchase_order
+  DeactivatePurchaseOrder:
+    handler: purchase_order/deactivate_purchase_order.deactivate_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order/deactivate
+        method: post
+        integration: lambda
+
+
+  # Quotation configuration
+  # Add quotation
   AddQuotation:
-    handler: add_quotation.add_quotation 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: quotation/add_quotation.add_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: post
+        integration: lambda
+
+  # Delete quotation
   DeleteQuotation:
-    handler: delete_quotation.delete_quotation 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: quotation/delete_quotation.delete_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: delete
+        integration: lambda
+
+  # Search quotation
   SearchQuotation:
-    handler: search_quotation.search_quotation 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: quotation/search_quotation.search_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: get
+
+  # Update quotation
   UpdateQuotation:
-    handler: upadte_quotation.upadte_quotation 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: quotation/upadte_quotation.upadte_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: put
+        integration: lambda
+
+  # Deactivate quotation
   DeactivateQuotation:
-    handler: deactivate_quotation.deactivate_quotation 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: quotation/deactivate_quotation.deactivate_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation/deactivate
+        method: post
+        integration: lambda
 
 
+  # Approvers configuration
+  # Add approvers
   AddApprovers:
-    handler: add_approvers.add_approvers 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: approvers/add_approvers.add_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: post
+        integration: lambda
+
+  # Delete approvers
   DeleteApprovers:
-    handler: delete_approvers.delete_approvers 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: approvers/delete_approvers.delete_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: delete
+        integration: lambda
+
+  # Search approvers
   SearchApprovers:
-    handler: search_approvers.search_approvers 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: approvers/search_approvers.search_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: get
+
+  # Update approvers
   UpdateApprovers:
-    handler: upadte_approvers.upadte_approvers
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
-  DeactivateApprovers:
-    handler: deactivate_approvers.deactivate_approvers 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: approvers/upadte_approvers.upadte_approvers
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: put
+        integration: lambda
 
 
+  # Company profile
+  # Add company_profile
   AddCompanyProfile:
-    handler: add_company_profile.add_company_profile 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: company_profile/add_company_profile.add_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: post
+        integration: lambda
+
+  # Delete company_profile
   DeleteCompanyProfile:
-    handler: delete_company_profile.delete_company_profile 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: company_profile/delete_company_profile.delete_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: delete
+        integration: lambda
+
+  # Search company_profile
   SearchCompanyProfile:
-    handler: search_company_profile.search_company_profile 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: company_profile/search_company_profile.search_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: get
+
+  # Update company_profile
   UpdateCompanyProfile:
-    handler: upadte_company_profile.upadte_company_profile
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: company_profile/upadte_company_profile.upadte_company_profile
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: put
+        integration: lambda
+
+  # Deactivate company_profile
   DeactivateCompanyProfile:
-    handler: deactivate_company_profile.deactivate_company_profile 
-    role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: company_profile/deactivate_company_profile.deactivate_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile/deactivate
+        method: post
+        integration: lambda
 
 
+  # Email configuration
+  # Search emails
   SearchSentEmails:
-      handler: search_sent_emails.search_sent_emails 
-      role: arn:aws:iam::657907747545:role/service-role/StepFunction_uc1_Requirement-role-2coy70yw
+    handler: email/search_sent_emails.search_sent_emails 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /email
+        method: get
