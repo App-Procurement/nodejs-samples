@@ -1,6 +1,7 @@
 exports.add_supplier = async (event, context, callback) => {
 
-    event = event.body
+    event = JSON.parse(event.body)
+
     const { Client } = require('pg');
 
     const client = new Client({
@@ -24,7 +25,13 @@ exports.add_supplier = async (event, context, callback) => {
             objReturn.code = 400
             objReturn.message = "body is null"
             client.end();
-            return objReturn;
+            return {
+                "statusCode": 400,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                "body": JSON.stringify(objReturn)
+            };
 
         } else {
 
@@ -33,12 +40,24 @@ exports.add_supplier = async (event, context, callback) => {
 
         client.end();
 
-        return objReturn;
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     } catch (e) {
         objReturn.code = 400;
         objReturn.message = e;
         client.end();
-        return objReturn;
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     }
 
 };

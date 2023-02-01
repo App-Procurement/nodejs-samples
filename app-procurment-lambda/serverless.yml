@@ -25,7 +25,7 @@ functions:
     - http:
         path: /request
         method: post
-        integration: lambda
+     
 
   # Delete request
   DeleteRequest:
@@ -35,7 +35,7 @@ functions:
     - http:
         path: /request
         method: delete
-        integration: lambda
+        
 
   # Search request
   SearchRequest:
@@ -54,7 +54,7 @@ functions:
     - http:
         path: /request
         method: put
-        integration: lambda
+        
 
   # Deactivate request
   DeactivateRequest:
@@ -64,7 +64,7 @@ functions:
     - http:
         path: /request/deactivate
         method: post
-        integration: lambda
+      
 
   # Approve request
   ApproveRequest:
@@ -74,8 +74,7 @@ functions:
     - http:
         path: /request/approve
         method: post
-        integration: lambda
-
+       
 
   # Supplier configuration
   # Add supplier
@@ -86,7 +85,6 @@ functions:
     - http:
         path: /supplier
         method: post
-        integration: lambda
 
   # Delete supplier
   DeleteSupplier:
@@ -96,7 +94,6 @@ functions:
     - http:
         path: /supplier
         method: delete
-        integration: lambda
 
   # Search supplier
   SearchSupplier:
@@ -115,7 +112,6 @@ functions:
     - http:
         path: /supplier
         method: put
-        integration: lambda
 
   # Deactivate Supplier
   DeactivateSupplier:
@@ -125,7 +121,6 @@ functions:
     - http:
         path: /supplier/deactivate
         method: post
-        integration: lambda
 
 
   # Product configuration
@@ -137,7 +132,6 @@ functions:
     - http:
         path: /product
         method: post
-        integration: lambda
 
   # Delete product
   DeleteProduct:
@@ -147,7 +141,6 @@ functions:
     - http:
         path: /product
         method: delete
-        integration: lambda
     
   # Search product
   SearchProduct:
@@ -166,7 +159,6 @@ functions:
     - http:
         path: /product
         method: put
-        integration: lambda
 
   # Deactivate product
   DeactivateProduct:
@@ -176,7 +168,6 @@ functions:
     - http:
         path: /product/deactivate
         method: post
-        integration: lambda
 
 
   # Currency configuration
@@ -188,7 +179,6 @@ functions:
     - http:
         path: /currency
         method: post
-        integration: lambda
 
   # Delete currency
   DeleteCurrency:
@@ -198,7 +188,6 @@ functions:
     - http:
         path: /currency
         method: delete
-        integration: lambda
 
   # Search currency
   SearchCurrency:
@@ -217,7 +206,6 @@ functions:
     - http:
         path: /currency
         method: put
-        integration: lambda
 
   # Deactivate currency
   DeactivateCurrency:
@@ -227,7 +215,6 @@ functions:
     - http:
         path: /currency/deactivate
         method: post
-        integration: lambda
 
 
   #  Invoice configuration
@@ -239,7 +226,6 @@ functions:
     - http:
         path: /invoice
         method: post
-        integration: lambda
 
   # Delete invoice
   DeleteInvoice:
@@ -249,7 +235,6 @@ functions:
     - http:
         path: /invoice
         method: delete
-        integration: lambda
 
   # Search invoice
   SearchInvoice:
@@ -268,7 +253,6 @@ functions:
     - http:
         path: /invoice
         method: put
-        integration: lambda
 
   # Deactivate invoice
   DeactivateInvoice:
@@ -278,7 +262,6 @@ functions:
     - http:
         path: /invoice/deactivate
         method: post
-        integration: lambda
 
 
   # Purchase Order configuration
@@ -290,7 +273,6 @@ functions:
     - http:
         path: /purchase_order
         method: post
-        integration: lambda
 
   # Delete purchase_order
   DeletePurchaseOrder:
@@ -300,7 +282,6 @@ functions:
     - http:
         path: /purchase_order
         method: delete
-        integration: lambda
     
   # Search purchase_order
   SearchPurchaseOrder:
@@ -319,7 +300,6 @@ functions:
     - http:
         path: /purchase_order
         method: put
-        integration: lambda
   
   # Deactivate purchase_order
   DeactivatePurchaseOrder:
@@ -329,7 +309,6 @@ functions:
     - http:
         path: /purchase_order/deactivate
         method: post
-        integration: lambda
 
 
   # Quotation configuration
@@ -341,7 +320,6 @@ functions:
     - http:
         path: /quotation
         method: post
-        integration: lambda
 
   # Delete quotation
   DeleteQuotation:
@@ -351,7 +329,6 @@ functions:
     - http:
         path: /quotation
         method: delete
-        integration: lambda
 
   # Search quotation
   SearchQuotation:
@@ -370,7 +347,6 @@ functions:
     - http:
         path: /quotation
         method: put
-        integration: lambda
 
   # Deactivate quotation
   DeactivateQuotation:
@@ -380,7 +356,6 @@ functions:
     - http:
         path: /quotation/deactivate
         method: post
-        integration: lambda
 
 
   # Approvers configuration
@@ -392,7 +367,6 @@ functions:
     - http:
         path: /approvers
         method: post
-        integration: lambda
 
   # Delete approvers
   DeleteApprovers:
@@ -402,7 +376,6 @@ functions:
     - http:
         path: /approvers
         method: delete
-        integration: lambda
 
   # Search approvers
   SearchApprovers:
@@ -421,7 +394,6 @@ functions:
     - http:
         path: /approvers
         method: put
-        integration: lambda
 
 
   # Company profile
@@ -433,7 +405,6 @@ functions:
     - http:
         path: /company_profile
         method: post
-        integration: lambda
 
   # Delete company_profile
   DeleteCompanyProfile:
@@ -443,7 +414,6 @@ functions:
     - http:
         path: /company_profile
         method: delete
-        integration: lambda
 
   # Search company_profile
   SearchCompanyProfile:
@@ -462,7 +432,6 @@ functions:
     - http:
         path: /company_profile
         method: put
-        integration: lambda
 
   # Deactivate company_profile
   DeactivateCompanyProfile:
@@ -472,7 +441,6 @@ functions:
     - http:
         path: /company_profile/deactivate
         method: post
-        integration: lambda
 
 
   # Email configuration

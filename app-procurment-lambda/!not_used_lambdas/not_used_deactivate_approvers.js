@@ -30,7 +30,7 @@ exports.deactivate_approvers = async (event, context, callback) => {
 
             } else {
 
-                objReturn.code = 801;
+                objReturn.code = 404;
                 objReturn.message = "id does not exist";
 
                 client.end();
@@ -39,7 +39,7 @@ exports.deactivate_approvers = async (event, context, callback) => {
 
         } else {
 
-            objReturn.code = 802;
+            objReturn.code = 404;
             objReturn.message = "input json must have an 'id' field";
 
             client.end();

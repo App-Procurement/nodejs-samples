@@ -1,6 +1,6 @@
 exports.approve_request = async (event, context, callback) => {
 
-    event = event.body
+    event = JSON.parse(event.body)
     const { Client } = require('pg');
 
     const client = new Client({
@@ -40,15 +40,27 @@ exports.approve_request = async (event, context, callback) => {
 
                     if (res.rowCount == 1) {
 
-                        return objReturn;
+                        return {
+                            "statusCode": 200,
+                            "headers": {
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            "body": JSON.stringify(objReturn)
+                        };
 
                     } else {
 
-                        objReturn.code = 801;
+                        objReturn.code = 404;
                         objReturn.message = "id does not exist";
 
                         client.end();
-                        return objReturn;
+                        return {
+                            "statusCode": 404,
+                            "headers": {
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            "body": JSON.stringify(objReturn)
+                        };
                     }
 
 
@@ -59,7 +71,14 @@ exports.approve_request = async (event, context, callback) => {
                     objReturn.message = "you are not authorised";
 
                     client.end();
-                    return objReturn;
+
+                    return {
+                        "statusCode": 401,
+                        "headers": {
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        "body": JSON.stringify(objReturn)
+                    };
 
                 }
 
@@ -68,15 +87,27 @@ exports.approve_request = async (event, context, callback) => {
                 objReturn.message = "role does not exist";
 
                 client.end();
-                return objReturn;
+                return {
+                    "statusCode": 400,
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    "body": JSON.stringify(objReturn)
+                };
             }
 
         } else {
-            objReturn.code = 802;
+            objReturn.code = 404;
             objReturn.message = "input json must have an 'id' & 'role' & 'price' field";
 
             client.end();
-            return objReturn;
+            return {
+                "statusCode": 404,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                "body": JSON.stringify(objReturn)
+            };
         }
 
     } catch (e) {
@@ -84,7 +115,13 @@ exports.approve_request = async (event, context, callback) => {
         objReturn.code = 404;
         objReturn.message = e;
         client.end();
-        return objReturn;
+        return {
+            "statusCode": 404,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     }
 };
 

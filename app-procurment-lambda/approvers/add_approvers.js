@@ -1,6 +1,6 @@
 exports.add_approvers = async (event, context, callback) => {
 
-    event = event.body
+    event = JSON.parse(event.body)
     const { Client } = require('pg');
 
     const client = new Client({
@@ -25,7 +25,7 @@ exports.add_approvers = async (event, context, callback) => {
             let abc = await client.query(`SELECT * FROM approvers`);
 
             if (abc.rows.length > 0) {
-                
+
                 objReturn.message = "company can have only one list of approvers"
 
             } else {
@@ -38,12 +38,24 @@ exports.add_approvers = async (event, context, callback) => {
 
         client.end();
 
-        return objReturn;
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     } catch (e) {
         objReturn.code = 400;
         objReturn.message = e;
         client.end();
-        return objReturn;
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     }
 
 };

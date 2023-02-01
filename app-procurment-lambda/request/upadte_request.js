@@ -1,6 +1,6 @@
 exports.upadte_request = async (event, context, callback) => {
 
-    event = event.body
+    event = JSON.parse(event.body)
     const { Client } = require('pg');
 
     const client = new Client({
@@ -27,24 +27,42 @@ exports.upadte_request = async (event, context, callback) => {
 
             if (res.rowCount == 1) {
 
-                return objReturn;
+                return {
+                    "statusCode": 200,
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    "body": JSON.stringify(objReturn)
+                };
 
             } else {
 
-                objReturn.code = 801;
+                objReturn.code = 404;
                 objReturn.message = "id does not exist";
 
                 client.end();
-                return objReturn;
+                return {
+                    "statusCode": 404,
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    "body": JSON.stringify(objReturn)
+                };
             }
 
         } else {
 
-            objReturn.code = 802;
+            objReturn.code = 404;
             objReturn.message = "input json must have an 'id' field";
 
             client.end();
-            return objReturn;
+            return {
+                "statusCode": 404,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                "body": JSON.stringify(objReturn)
+            };
         }
 
     } catch (e) {
@@ -52,7 +70,13 @@ exports.upadte_request = async (event, context, callback) => {
         objReturn.code = 400;
         objReturn.message = e;
         client.end();
-        return objReturn;
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     }
 
 

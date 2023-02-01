@@ -1,12 +1,12 @@
 exports.deactivate_request = async (event, context, callback) => {
-    event = event.body
+    event = JSON.parse(event.body)
     const { Client } = require('pg');
 
     const client = new Client({
         host: "postgresql.ch8wfucynpvq.us-east-1.rds.amazonaws.com",
         port: "5431",
         database: "procurement",
-        user:"postgres",
+        user: "postgres",
         password: "P0$tGr3$&s3qua1$n3t!k5"
     });
 
@@ -26,24 +26,42 @@ exports.deactivate_request = async (event, context, callback) => {
 
             if (res.rowCount == 1) {
 
-                return objReturn;
+                return {
+                    "statusCode": 200,
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    "body": JSON.stringify(objReturn)
+                };
 
             } else {
 
-                objReturn.code = 801;
+                objReturn.code = 404;
                 objReturn.message = "id does not exist";
 
                 client.end();
-                return objReturn;
+                return {
+                    "statusCode": 404,
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    "body": JSON.stringify(objReturn)
+                };
             }
 
         } else {
 
-            objReturn.code = 802;
+            objReturn.code = 404;
             objReturn.message = "input json must have an 'id' field";
 
             client.end();
-            return objReturn;
+            return {
+                "statusCode": 404,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                "body": JSON.stringify(objReturn)
+            };
         }
 
     } catch (e) {
@@ -51,7 +69,13 @@ exports.deactivate_request = async (event, context, callback) => {
         objReturn.code = 400;
         objReturn.message = e;
         client.end();
-        return objReturn;
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": JSON.stringify(objReturn)
+        };
     }
 
 
