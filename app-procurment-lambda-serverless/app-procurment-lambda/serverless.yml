@@ -1,0 +1,454 @@
+service: procurement
+frameworkVersion: '3'
+
+useDotenv: true
+
+plugins: 
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  timeout: 15
+  runtime: nodejs14.x
+  region: us-east-1
+
+
+functions:
+
+  # Request configuration
+  # Add request
+  AddRequest:
+    handler: request/add_request.add_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: post
+     
+
+  # Delete request
+  DeleteRequest:
+    handler: request/delete_request.delete_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: delete
+        
+
+  # Search request
+  SearchRequest:
+    handler: request/search_request.search_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: get
+
+  # Update request
+  UpdateRequest:
+    handler: request/upadte_request.upadte_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request
+        method: put
+        
+
+  # Deactivate request
+  DeactivateRequest:
+    handler: request/deactivate_request.deactivate_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request/deactivate
+        method: post
+      
+
+  # Approve request
+  ApproveRequest:
+    handler: request/approve_request.approve_request 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /request/approve
+        method: post
+       
+
+  # Supplier configuration
+  # Add supplier
+  AddSupplier:
+    handler: supplier/add_supplier.add_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: post
+
+  # Delete supplier
+  DeleteSupplier:
+    handler: supplier/delete_supplier.delete_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: delete
+
+  # Search supplier
+  SearchSupplier:
+    handler: supplier/search_supplier.search_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: get
+
+  # Update supplier
+  UpdateSupplier:
+    handler: supplier/upadte_supplier.upadte_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier
+        method: put
+
+  # Deactivate Supplier
+  DeactivateSupplier:
+    handler: supplier/deactivate_supplier.deactivate_supplier 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /supplier/deactivate
+        method: post
+
+
+  # Product configuration
+  # Add product
+  AddProduct:
+    handler: product/add_product.add_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: post
+
+  # Delete product
+  DeleteProduct:
+    handler: product/delete_product.delete_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: delete
+    
+  # Search product
+  SearchProduct:
+    handler: product/search_product.search_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: get
+
+  # Update product
+  UpdateProduct:
+    handler: product/upadte_product.upadte_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product
+        method: put
+
+  # Deactivate product
+  DeactivateProduct:
+    handler: product/deactivate_product.deactivate_product 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /product/deactivate
+        method: post
+
+
+  # Currency configuration
+  # Add currency
+  AddCurrency:
+    handler: currency/add_currency.add_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: post
+
+  # Delete currency
+  DeleteCurrency:
+    handler: currency/delete_currency.delete_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: delete
+
+  # Search currency
+  SearchCurrency:
+    handler: currency/search_currency.search_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: get
+
+  # Update currency
+  UpdateCurrency:
+    handler: currency/upadte_currency.upadte_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency
+        method: put
+
+  # Deactivate currency
+  DeactivateCurrency:
+    handler: currency/deactivate_currency.deactivate_currency 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /currency/deactivate
+        method: post
+
+
+  #  Invoice configuration
+  # Add invoice
+  AddInvoice:
+    handler: invoice/add_invoice.add_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: post
+
+  # Delete invoice
+  DeleteInvoice:
+    handler: invoice/delete_invoice.delete_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: delete
+
+  # Search invoice
+  SearchInvoice:
+    handler: invoice/search_invoice.search_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: get
+
+  # Update invoice
+  UpdateInvoice:
+    handler: invoice/upadte_invoice.upadte_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice
+        method: put
+
+  # Deactivate invoice
+  DeactivateInvoice:
+    handler: invoice/deactivate_invoice.deactivate_invoice 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /invoice/deactivate
+        method: post
+
+
+  # Purchase Order configuration
+  # Add purchase_order
+  AddPurchaseOrder:
+    handler: purchase_order/add_purchase_order.add_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: post
+
+  # Delete purchase_order
+  DeletePurchaseOrder:
+    handler: purchase_order/delete_purchase_order.delete_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: delete
+    
+  # Search purchase_order
+  SearchPurchaseOrder:
+    handler: purchase_order/search_purchase_order.search_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: get
+
+  # Update purchase_order
+  UpdatePurchaseOrder:
+    handler: purchase_order/upadte_purchase_order.upadte_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order
+        method: put
+  
+  # Deactivate purchase_order
+  DeactivatePurchaseOrder:
+    handler: purchase_order/deactivate_purchase_order.deactivate_purchase_order 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /purchase_order/deactivate
+        method: post
+
+
+  # Quotation configuration
+  # Add quotation
+  AddQuotation:
+    handler: quotation/add_quotation.add_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: post
+
+  # Delete quotation
+  DeleteQuotation:
+    handler: quotation/delete_quotation.delete_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: delete
+
+  # Search quotation
+  SearchQuotation:
+    handler: quotation/search_quotation.search_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: get
+
+  # Update quotation
+  UpdateQuotation:
+    handler: quotation/upadte_quotation.upadte_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation
+        method: put
+
+  # Deactivate quotation
+  DeactivateQuotation:
+    handler: quotation/deactivate_quotation.deactivate_quotation 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /quotation/deactivate
+        method: post
+
+
+  # Approvers configuration
+  # Add approvers
+  AddApprovers:
+    handler: approvers/add_approvers.add_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: post
+
+  # Delete approvers
+  DeleteApprovers:
+    handler: approvers/delete_approvers.delete_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: delete
+
+  # Search approvers
+  SearchApprovers:
+    handler: approvers/search_approvers.search_approvers 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: get
+
+  # Update approvers
+  UpdateApprovers:
+    handler: approvers/upadte_approvers.upadte_approvers
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /approvers
+        method: put
+
+
+  # Company profile
+  # Add company_profile
+  AddCompanyProfile:
+    handler: company_profile/add_company_profile.add_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: post
+
+  # Delete company_profile
+  DeleteCompanyProfile:
+    handler: company_profile/delete_company_profile.delete_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: delete
+
+  # Search company_profile
+  SearchCompanyProfile:
+    handler: company_profile/search_company_profile.search_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: get
+
+  # Update company_profile
+  UpdateCompanyProfile:
+    handler: company_profile/upadte_company_profile.upadte_company_profile
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile
+        method: put
+
+  # Deactivate company_profile
+  DeactivateCompanyProfile:
+    handler: company_profile/deactivate_company_profile.deactivate_company_profile 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /company_profile/deactivate
+        method: post
+
+
+  # Email configuration
+  # Search emails
+  SearchSentEmails:
+    handler: email/search_sent_emails.search_sent_emails 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /email
+        method: get
