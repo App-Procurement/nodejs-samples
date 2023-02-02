@@ -1,4 +1,6 @@
 exports.upadte_currency = async (event, context, callback) => {
+    const id = event.pathParameters.id
+
     event = JSON.parse(event.body)
 
 
@@ -23,9 +25,9 @@ exports.upadte_currency = async (event, context, callback) => {
 
     try {
 
-        if (event.id) {
+        if (id) {
 
-            const res = await client.query(`UPDATE currency SET details= $1::jsonb WHERE id = $2`, [event.details, event.id]);
+            const res = await client.query(`UPDATE currency SET details= $1::jsonb WHERE id = $2`, [event.details, id]);
 
             if (res.rowCount == 1) {
 

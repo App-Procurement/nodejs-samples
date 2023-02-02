@@ -1,6 +1,7 @@
 exports.upadte_purchase_order = async (event, context, callback) => {
-    event = JSON.parse(event.body)
 
+    const id = event.pathParameters.id
+    event = JSON.parse(event.body)
 
     const { Client } = require('pg');
 

@@ -50,7 +50,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /request
+        path: /request/{id}
         method: put
         
   # Deactivate request
@@ -68,7 +68,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /request/approve
+        path: /request/approve/{id}
         method: post
        
 
@@ -106,7 +106,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /supplier
+        path: /supplier/{id}
         method: put
 
   # Deactivate Supplier
@@ -153,7 +153,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /product
+        path: /product/{id}
         method: put
 
   # Deactivate product
@@ -200,7 +200,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /currency
+        path: /currency/{id}
         method: put
 
   # Deactivate currency
@@ -247,7 +247,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /invoice
+        path: /invoice/{id}
         method: put
 
   # Deactivate invoice
@@ -294,7 +294,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /purchase_order
+        path: /purchase_order/{id}
         method: put
   
   # Deactivate purchase_order
@@ -341,7 +341,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /quotation
+        path: /quotation/{id}
         method: put
 
   # Deactivate quotation
@@ -388,7 +388,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /approvers
+        path: /approvers/{id}
         method: put
 
 
@@ -426,7 +426,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /company_profile
+        path: /company_profile/{id}
         method: put
 
   # Deactivate company_profile

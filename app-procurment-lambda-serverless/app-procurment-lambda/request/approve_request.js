@@ -1,4 +1,5 @@
 exports.approve_request = async (event, context, callback) => {
+    const id = event.pathParameters.id
 
     event = JSON.parse(event.body)
     const { Client } = require('pg');
@@ -30,13 +31,13 @@ exports.approve_request = async (event, context, callback) => {
 
     try {
 
-        if (event.id && event.role && event.price) {
+        if (id && event.role && event.price) {
 
             if (roleNames.includes(event.role)) {
 
                 if (roleReturn[event.role] >= event.price) {
 
-                    const res = await client.query(`UPDATE request SET details = jsonb_set(details, '{status}', '"approved"') WHERE id=$1`, [event.id]);
+                    const res = await client.query(`UPDATE request SET details = jsonb_set(details, '{status}', '"approved"') WHERE id=$1`, [id]);
 
                     if (res.rowCount == 1) {
 
