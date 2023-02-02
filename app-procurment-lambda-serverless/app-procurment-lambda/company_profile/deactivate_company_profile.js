@@ -1,6 +1,7 @@
 exports.deactivate_company_profile = async (event, context, callback) => {
 
-    event = JSON.parse(event.body)
+    event = event.pathParameters
+
     const { Client } = require('pg');
 
     const client = new Client({

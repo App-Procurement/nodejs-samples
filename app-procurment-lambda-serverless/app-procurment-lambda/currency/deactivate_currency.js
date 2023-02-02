@@ -1,6 +1,5 @@
 exports.deactivate_currency = async (event, context, callback) => {
-    event = JSON.parse(event.body)
-
+    event = event.pathParameters
 
     const { Client } = require('pg');
 

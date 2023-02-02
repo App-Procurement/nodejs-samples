@@ -26,17 +26,15 @@ functions:
         path: /request
         method: post
      
-
   # Delete request
   DeleteRequest:
     handler: request/delete_request.delete_request 
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /request
+        path: /request/{id}
         method: delete
         
-
   # Search request
   SearchRequest:
     handler: request/search_request.search_request 
@@ -55,17 +53,15 @@ functions:
         path: /request
         method: put
         
-
   # Deactivate request
   DeactivateRequest:
     handler: request/deactivate_request.deactivate_request 
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /request/deactivate
+        path: /request/deactivate/{id}
         method: post
       
-
   # Approve request
   ApproveRequest:
     handler: request/approve_request.approve_request 
@@ -92,7 +88,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /supplier
+        path: /supplier/{id}
         method: delete
 
   # Search supplier
@@ -119,7 +115,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /supplier/deactivate
+        path: /supplier/deactivate/{id}
         method: post
 
 
@@ -139,7 +135,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /product
+        path: /product/{id}
         method: delete
     
   # Search product
@@ -166,7 +162,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /product/deactivate
+        path: /product/deactivate/{id}
         method: post
 
 
@@ -186,7 +182,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /currency
+        path: /currency/{id}
         method: delete
 
   # Search currency
@@ -213,7 +209,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /currency/deactivate
+        path: /currency/deactivate/{id}
         method: post
 
 
@@ -233,7 +229,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /invoice
+        path: /invoice/{id}
         method: delete
 
   # Search invoice
@@ -260,7 +256,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /invoice/deactivate
+        path: /invoice/deactivate/{id}
         method: post
 
 
@@ -280,7 +276,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /purchase_order
+        path: /purchase_order/{id}
         method: delete
     
   # Search purchase_order
@@ -307,7 +303,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /purchase_order/deactivate
+        path: /purchase_order/deactivate/{id}
         method: post
 
 
@@ -327,7 +323,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /quotation
+        path: /quotation/{id}
         method: delete
 
   # Search quotation
@@ -354,7 +350,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /quotation/deactivate
+        path: /quotation/deactivate/{id}
         method: post
 
 
@@ -374,7 +370,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /approvers
+        path: /approvers/{id}
         method: delete
 
   # Search approvers
@@ -412,7 +408,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /company_profile
+        path: /company_profile/{id}
         method: delete
 
   # Search company_profile
@@ -439,7 +435,7 @@ functions:
     role: ${env:LAMBDA_ROLE}
     events:
     - http:
-        path: /company_profile/deactivate
+        path: /company_profile/deactivate/{id}
         method: post
 
 

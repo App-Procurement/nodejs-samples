@@ -1,6 +1,5 @@
 exports.deactivate_quotation = async (event, context, callback) => {
-    event = JSON.parse(event.body)
-
+    event = event.pathParameters
 
     const { Client } = require('pg');
 

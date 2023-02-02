@@ -1,7 +1,6 @@
 exports.deactivate_invoice = async (event, context, callback) => {
     const { Client } = require('pg');
-    event = JSON.parse(event.body)
-
+    event = event.pathParameters
 
     const client = new Client({
         host: "postgresql.ch8wfucynpvq.us-east-1.rds.amazonaws.com",

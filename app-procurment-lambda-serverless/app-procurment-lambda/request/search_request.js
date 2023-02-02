@@ -11,7 +11,6 @@ exports.search_request = async (event, context, callback) => {
     });
     client.connect();
 
-
     let data = {};
 
     if (event.queryStringParameters) {
