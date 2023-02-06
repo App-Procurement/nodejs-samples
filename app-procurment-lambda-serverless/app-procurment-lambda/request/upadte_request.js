@@ -26,7 +26,7 @@ exports.upadte_request = async (event, context, callback) => {
     try {
 
         if (id) {
-            const res = await client.query(`UPDATE request SET details= $1::jsonb WHERE id = $2`, [event.details, id]);
+            const res = await client.query(`UPDATE request SET details= $1::jsonb WHERE id = $2`, [event, id]);
 
             if (res.rowCount == 1) {
 

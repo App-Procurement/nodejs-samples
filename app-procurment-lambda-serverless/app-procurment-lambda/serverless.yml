@@ -25,6 +25,7 @@ functions:
     - http:
         path: /request
         method: post
+        cors: true
      
   # Delete request
   DeleteRequest:
@@ -34,6 +35,7 @@ functions:
     - http:
         path: /request/{id}
         method: delete
+        cors: true
         
   # Search request
   SearchRequest:
@@ -43,6 +45,7 @@ functions:
     - http:
         path: /request
         method: get
+        cors: true
 
   # Update request
   UpdateRequest:
@@ -52,6 +55,7 @@ functions:
     - http:
         path: /request/{id}
         method: put
+        cors: true
         
   # Deactivate request
   DeactivateRequest:
@@ -61,6 +65,7 @@ functions:
     - http:
         path: /request/deactivate/{id}
         method: post
+        cors: true
       
   # Approve request
   ApproveRequest:
@@ -70,6 +75,7 @@ functions:
     - http:
         path: /request/approve/{id}
         method: post
+        cors: true
        
 
   # Supplier configuration
@@ -81,6 +87,7 @@ functions:
     - http:
         path: /supplier
         method: post
+        cors: true
 
   # Delete supplier
   DeleteSupplier:
@@ -90,6 +97,7 @@ functions:
     - http:
         path: /supplier/{id}
         method: delete
+        cors: true
 
   # Search supplier
   SearchSupplier:
@@ -99,6 +107,7 @@ functions:
     - http:
         path: /supplier
         method: get
+        cors: true
 
   # Update supplier
   UpdateSupplier:
@@ -108,6 +117,7 @@ functions:
     - http:
         path: /supplier/{id}
         method: put
+        cors: true
 
   # Deactivate Supplier
   DeactivateSupplier:
@@ -117,6 +127,7 @@ functions:
     - http:
         path: /supplier/deactivate/{id}
         method: post
+        cors: true
 
 
   # Product configuration
@@ -128,6 +139,7 @@ functions:
     - http:
         path: /product
         method: post
+        cors: true
 
   # Delete product
   DeleteProduct:
@@ -137,6 +149,7 @@ functions:
     - http:
         path: /product/{id}
         method: delete
+        cors: true
     
   # Search product
   SearchProduct:
@@ -146,6 +159,7 @@ functions:
     - http:
         path: /product
         method: get
+        cors: true
 
   # Update product
   UpdateProduct:
@@ -155,6 +169,7 @@ functions:
     - http:
         path: /product/{id}
         method: put
+        cors: true
 
   # Deactivate product
   DeactivateProduct:
@@ -164,6 +179,7 @@ functions:
     - http:
         path: /product/deactivate/{id}
         method: post
+        cors: true
 
 
   # Currency configuration
@@ -175,7 +191,8 @@ functions:
     - http:
         path: /currency
         method: post
-
+        cors: true
+       
   # Delete currency
   DeleteCurrency:
     handler: currency/delete_currency.delete_currency 
@@ -184,6 +201,7 @@ functions:
     - http:
         path: /currency/{id}
         method: delete
+        cors: true
 
   # Search currency
   SearchCurrency:
@@ -193,6 +211,7 @@ functions:
     - http:
         path: /currency
         method: get
+        cors: true
 
   # Update currency
   UpdateCurrency:
@@ -202,6 +221,7 @@ functions:
     - http:
         path: /currency/{id}
         method: put
+        cors: true
 
   # Deactivate currency
   DeactivateCurrency:
@@ -211,6 +231,7 @@ functions:
     - http:
         path: /currency/deactivate/{id}
         method: post
+        cors: true
 
 
   #  Invoice configuration
@@ -222,6 +243,7 @@ functions:
     - http:
         path: /invoice
         method: post
+        cors: true
 
   # Delete invoice
   DeleteInvoice:
@@ -231,6 +253,7 @@ functions:
     - http:
         path: /invoice/{id}
         method: delete
+        cors: true
 
   # Search invoice
   SearchInvoice:
@@ -240,6 +263,7 @@ functions:
     - http:
         path: /invoice
         method: get
+        cors: true
 
   # Update invoice
   UpdateInvoice:
@@ -249,6 +273,7 @@ functions:
     - http:
         path: /invoice/{id}
         method: put
+        cors: true
 
   # Deactivate invoice
   DeactivateInvoice:
@@ -258,6 +283,7 @@ functions:
     - http:
         path: /invoice/deactivate/{id}
         method: post
+        cors: true
 
 
   # Purchase Order configuration
@@ -269,6 +295,7 @@ functions:
     - http:
         path: /purchase_order
         method: post
+        cors: true
 
   # Delete purchase_order
   DeletePurchaseOrder:
@@ -278,6 +305,7 @@ functions:
     - http:
         path: /purchase_order/{id}
         method: delete
+        cors: true
     
   # Search purchase_order
   SearchPurchaseOrder:
@@ -287,6 +315,7 @@ functions:
     - http:
         path: /purchase_order
         method: get
+        cors: true
 
   # Update purchase_order
   UpdatePurchaseOrder:
@@ -296,6 +325,7 @@ functions:
     - http:
         path: /purchase_order/{id}
         method: put
+        cors: true
   
   # Deactivate purchase_order
   DeactivatePurchaseOrder:
@@ -305,6 +335,7 @@ functions:
     - http:
         path: /purchase_order/deactivate/{id}
         method: post
+        cors: true
 
 
   # Quotation configuration
@@ -316,6 +347,7 @@ functions:
     - http:
         path: /quotation
         method: post
+        cors: true
 
   # Delete quotation
   DeleteQuotation:
@@ -325,6 +357,7 @@ functions:
     - http:
         path: /quotation/{id}
         method: delete
+        cors: true
 
   # Search quotation
   SearchQuotation:
@@ -334,6 +367,7 @@ functions:
     - http:
         path: /quotation
         method: get
+        cors: true
 
   # Update quotation
   UpdateQuotation:
@@ -343,6 +377,7 @@ functions:
     - http:
         path: /quotation/{id}
         method: put
+        cors: true
 
   # Deactivate quotation
   DeactivateQuotation:
@@ -352,6 +387,7 @@ functions:
     - http:
         path: /quotation/deactivate/{id}
         method: post
+        cors: true
 
 
   # Approvers configuration
@@ -363,6 +399,7 @@ functions:
     - http:
         path: /approvers
         method: post
+        cors: true
 
   # Delete approvers
   DeleteApprovers:
@@ -372,6 +409,7 @@ functions:
     - http:
         path: /approvers/{id}
         method: delete
+        cors: true
 
   # Search approvers
   SearchApprovers:
@@ -381,6 +419,7 @@ functions:
     - http:
         path: /approvers
         method: get
+        cors: true
 
   # Update approvers
   UpdateApprovers:
@@ -390,6 +429,7 @@ functions:
     - http:
         path: /approvers/{id}
         method: put
+        cors: true
 
 
   # Company profile
@@ -401,6 +441,7 @@ functions:
     - http:
         path: /company_profile
         method: post
+        cors: true
 
   # Delete company_profile
   DeleteCompanyProfile:
@@ -410,6 +451,7 @@ functions:
     - http:
         path: /company_profile/{id}
         method: delete
+        cors: true
 
   # Search company_profile
   SearchCompanyProfile:
@@ -419,6 +461,7 @@ functions:
     - http:
         path: /company_profile
         method: get
+        cors: true
 
   # Update company_profile
   UpdateCompanyProfile:
@@ -428,6 +471,7 @@ functions:
     - http:
         path: /company_profile/{id}
         method: put
+        cors: true
 
   # Deactivate company_profile
   DeactivateCompanyProfile:
@@ -437,6 +481,163 @@ functions:
     - http:
         path: /company_profile/deactivate/{id}
         method: post
+        cors: true
+
+
+  # department configuration
+  # Add department
+  AddDepartment:
+    handler: department/add_department.add_department 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /department
+        method: post
+        cors: true
+
+  # Delete department
+  DeleteDepartment:
+    handler: department/delete_department.delete_department 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /department/{id}
+        method: delete
+        cors: true
+
+  # Search department
+  SearchDepartment:
+    handler: department/search_department.search_department 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /department
+        method: get
+        cors: true
+
+  # Update department
+  UpdateDepartment:
+    handler: department/update_department.upadte_department 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /department/{id}
+        method: put
+        cors: true
+
+  # Deactivate department
+  DeactivateDepartment:
+    handler: department/deactivate_department.deactivate_department 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /department/deactivate/{id}
+        method: post
+        cors: true
+
+
+  # contact configuration
+  # Add contact
+  AddContact:
+    handler: contact/add_contact.add_contact 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /contact
+        method: post
+        cors: true
+
+  # Delete contact
+  DeleteContact:
+    handler: contact/delete_contact.delete_contact 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /contact/{id}
+        method: delete
+        cors: true
+
+  # Search contact
+  SearchContact:
+    handler: contact/search_contact.search_contact 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /contact
+        method: get
+        cors: true
+
+  # Update contact
+  UpdateContact:
+    handler: contact/update_contact.upadte_contact 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /contact/{id}
+        method: put
+        cors: true
+
+  # Deactivate contact
+  DeactivateContact:
+    handler: contact/deactivate_contact.deactivate_contact 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /contact/deactivate/{id}
+        method: post
+        cors: true
+
+
+  # notification configuration
+  # Add notification
+  AddNotification:
+    handler: notification/add_notification.add_notification 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /notification
+        method: post
+        cors: true
+
+  # Delete notification
+  DeleteNotification:
+    handler: notification/delete_notification.delete_notification 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /notification/{id}
+        method: delete
+        cors: true
+
+  # Search notification
+  SearchNotification:
+    handler: notification/search_notification.search_notification 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /notification
+        method: get
+        cors: true
+
+  # Update notification
+  UpdateNotification:
+    handler: notification/update_notification.upadte_notification 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /notification/{id}
+        method: put
+        cors: true
+
+  # Deactivate notification
+  DeactivateNotification:
+    handler: notification/deactivate_notification.deactivate_notification 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /notification/deactivate/{id}
+        method: post
+        cors: true
 
 
   # Email configuration
@@ -448,3 +649,4 @@ functions:
     - http:
         path: /email
         method: get
+        cors: true

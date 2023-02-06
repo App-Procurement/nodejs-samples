@@ -25,7 +25,7 @@ exports.upadte_supplier = async (event, context, callback) => {
 
         if (id) {
 
-            const res = await client.query(`UPDATE supplier SET details= $1::jsonb WHERE id = $2`, [event.details, id]);
+            const res = await client.query(`UPDATE supplier SET details= $1::jsonb WHERE id = $2`, [event, id]);
 
             if (res.rowCount == 1) {
 

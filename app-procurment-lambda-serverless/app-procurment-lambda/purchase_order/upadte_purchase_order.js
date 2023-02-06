@@ -26,7 +26,7 @@ exports.upadte_purchase_order = async (event, context, callback) => {
 
         if (event.id) {
 
-            const res = await client.query(`UPDATE purchase_order SET details= $1::jsonb WHERE id = $2`, [event.details, event.id]);
+            const res = await client.query(`UPDATE purchase_order SET details= $1::jsonb WHERE id = $2`, [event, event.id]);
 
             if (res.rowCount == 1) {
 

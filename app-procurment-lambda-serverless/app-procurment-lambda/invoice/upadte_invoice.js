@@ -27,7 +27,7 @@ exports.upadte_invoice = async (event, context, callback) => {
 
         if (id) {
 
-            const res = await client.query(`UPDATE invoice SET details= $1::jsonb WHERE id = $2`, [event.details, id]);
+            const res = await client.query(`UPDATE invoice SET details= $1::jsonb WHERE id = $2`, [event, id]);
 
             if (res.rowCount == 1) {
 

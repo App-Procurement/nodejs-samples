@@ -25,7 +25,7 @@ exports.upadte_approvers = async (event, context, callback) => {
 
         if (id) {
 
-            const res = await client.query(`UPDATE approvers SET details= $1::jsonb WHERE id = $2`, [event.details, id]);
+            const res = await client.query(`UPDATE approvers SET details= $1::jsonb WHERE id = $2`, [event, id]);
 
             if (res.rowCount == 1) {
 
