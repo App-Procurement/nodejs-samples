@@ -1,0 +1,4 @@
+create table location(
+	id serial primary key,
+	details jsonb
+)

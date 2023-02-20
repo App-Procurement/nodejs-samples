@@ -640,6 +640,162 @@ functions:
         cors: true
 
 
+  # kanban configuration
+  # Add kanban
+  AddKanban:
+    handler: kanban/add_kanban.add_kanban 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /kanban
+        method: post
+        cors: true
+
+  # Delete kanban
+  DeleteKanban:
+    handler: kanban/delete_kanban.delete_kanban 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /kanban/{id}
+        method: delete
+        cors: true
+
+  # Search kanban
+  SearchKanban:
+    handler: kanban/search_kanban.search_kanban 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /kanban
+        method: get
+        cors: true
+
+  # Update kanban
+  UpdateKanban:
+    handler: kanban/update_kanban.upadte_kanban 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /kanban/{id}
+        method: put
+        cors: true
+
+  # Deactivate kanban
+  DeactivateKanban:
+    handler: kanban/deactivate_kanban.deactivate_kanban 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /kanban/deactivate/{id}
+        method: post
+        cors: true
+
+
+  # location configuration
+  # Add location
+  AddLocation:
+    handler: location/add_location.add_location 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /location
+        method: post
+        cors: true
+
+  # Delete location
+  DeleteLocation:
+    handler: location/delete_location.delete_location 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /location/{id}
+        method: delete
+        cors: true
+
+  # Search location
+  SearchLocation:
+    handler: location/search_location.search_location 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /location
+        method: get
+        cors: true
+
+  # Update location
+  UpdateLocation:
+    handler: location/update_location.upadte_location 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /location/{id}
+        method: put
+        cors: true
+
+  # Deactivate location
+  DeactivateLocation:
+    handler: location/deactivate_location.deactivate_location 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /location/deactivate/{id}
+        method: post
+        cors: true
+
+
+  # budget_overview_data configuration
+  # Add budget_overview_data
+  Addbudget_overview_data:
+    handler: budget_overview_data/add_budget_overview_data.add_budget_overview_data 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /budget_overview_data
+        method: post
+        cors: true
+
+  # Delete budget_overview_data
+  Deletebudget_overview_data:
+    handler: budget_overview_data/delete_budget_overview_data.delete_budget_overview_data 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /budget_overview_data/{id}
+        method: delete
+        cors: true
+
+  # Search budget_overview_data
+  Searchbudget_overview_data:
+    handler: budget_overview_data/search_budget_overview_data.search_budget_overview_data 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /budget_overview_data
+        method: get
+        cors: true
+
+  # Update budget_overview_data
+  Updatebudget_overview_data:
+    handler: budget_overview_data/update_budget_overview_data.upadte_budget_overview_data 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /budget_overview_data/{id}
+        method: put
+        cors: true
+
+  # Deactivate budget_overview_data
+  Deactivatebudget_overview_data:
+    handler: budget_overview_data/deactivate_budget_overview_data.deactivate_budget_overview_data 
+    role: ${env:LAMBDA_ROLE}
+    events:
+    - http:
+        path: /budget_overview_data/deactivate/{id}
+        method: post
+        cors: true
+
+
   # Email configuration
   # Search emails
   SearchSentEmails:
